@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Wizard World</string>
+    <string name="title_elixirs">Elixirs</string>
+    <string name="title_houses">Houses</string>
+    <string name="title_spells">Spells</string>
+    <string name="title_wizards">Wizards</string>
+    <string name="title_ingredients">Ingredients</string>
+    <string name="hint_pesquisa">Search…</string>
+</resources>
