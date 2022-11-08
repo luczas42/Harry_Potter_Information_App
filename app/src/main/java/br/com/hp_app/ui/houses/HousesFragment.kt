@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentHousesBinding
+import br.com.hp_app.ui.adapters.RecyclerHousesAdapter
 import br.com.hp_app.ui.viewmodel.HousesViewModel
 
 class HousesFragment : Fragment() {
@@ -17,23 +17,26 @@ class HousesFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
+    private  var housesViewModel: HousesViewModel = HousesViewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val housesViewModel =
-            ViewModelProvider(this).get(HousesViewModel::class.java)
-
         _binding = FragmentHousesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        housesViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        configuraRecyclerView()
+
         return root
+    }
+
+    private fun configuraRecyclerView() {
+        housesViewModel.pegaLista()
+        housesViewModel.lista.observe(requireActivity()) { houses ->
+            binding.recyclerViewHouses.layoutManager = LinearLayoutManager(context)
+            binding.recyclerViewHouses.adapter = RecyclerHousesAdapter(houses)
+        }
     }
 
     override fun onDestroyView() {

@@ -1,4 +1,4 @@
-package br.com.hp_app
+package br.com.hp_app.ui
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import br.com.hp_app.R
 import br.com.hp_app.databinding.ActivityListaBinding
 
 class ListaActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class ListaActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_spells
+                R.id.navigation_houses, R.id.navigation_elixirs, R.id.navigation_spells
             )
         )
 
