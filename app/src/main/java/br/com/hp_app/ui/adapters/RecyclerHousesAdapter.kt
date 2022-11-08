@@ -15,7 +15,7 @@ class RecyclerHousesAdapter(private val houses: List<Houses>) :
         RecyclerView.ViewHolder(binding.root) {
         fun vincula(houses: Houses) = with(binding) {
             tvNome.text = houses.name
-            tvDescricao.text = houses.houseColours
+            tvDescricao.text = houses.animal
         }
     }
 
