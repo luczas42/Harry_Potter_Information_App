@@ -22,4 +22,14 @@
         android:name="br.com.hp_app.ui.spells.SpellsFragment"
         android:label="@string/title_spells"
         tools:layout="@layout/fragment_spells" />
+    <fragment
+        android:id="@+id/navigation_ingredients"
+        android:name="br.com.hp_app.ui.ingredients.IngredientsFragment"
+        android:label="Ingredients"
+        tools:layout="@layout/fragment_ingredients" />
+    <fragment
+        android:id="@+id/navigation_wizards"
+        android:name="br.com.hp_app.ui.wizards.WizardsFragment"
+        android:label="Wizards"
+        tools:layout="@layout/fragment_wizards" />
 </navigation>

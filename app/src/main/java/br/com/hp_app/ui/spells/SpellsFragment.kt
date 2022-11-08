@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentSpellsBinding
-import br.com.hp_app.ui.viewmodel.SpellsViewModel
+import br.com.hp_app.ui.adapters.RecyclerSpellsAdapter
+import br.com.hp_app.ui.viewmodel.ListasViewModel
 
 class SpellsFragment : Fragment() {
 
     private var _binding: FragmentSpellsBinding? = null
+    private var viewModel: ListasViewModel = ListasViewModel()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,16 +24,22 @@ class SpellsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val spellsViewModel =
-            ViewModelProvider(this).get(SpellsViewModel::class.java)
+
 
         _binding = FragmentSpellsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val textView: TextView = binding.textNotifications
-        spellsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
+        configuraRecyclerView()
+
         return root
+    }
+
+    private fun configuraRecyclerView() {
+        viewModel.pegaListaSpells()
+        viewModel.listaSpells.observe(requireActivity()) { spells ->
+            binding.recyclerViewSpells.layoutManager = LinearLayoutManager(context)
+            binding.recyclerViewSpells.adapter = RecyclerSpellsAdapter(spells)
+        }
     }
 
     override fun onDestroyView() {

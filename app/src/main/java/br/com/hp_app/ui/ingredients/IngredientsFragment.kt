@@ -1,4 +1,4 @@
-package br.com.hp_app.ui.elixirs
+package br.com.hp_app.ui.ingredients
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,18 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.hp_app.databinding.FragmentElixirsBinding
-import br.com.hp_app.ui.adapters.RecyclerElixirsAdapter
+import br.com.hp_app.databinding.FragmentIngredientsBinding
+import br.com.hp_app.ui.adapters.RecyclerIngredientsAdapter
+import br.com.hp_app.ui.adapters.RecyclerSpellsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
 
-class ElixirsFragment : Fragment() {
+class IngredientsFragment : Fragment() {
 
-    private var _binding: FragmentElixirsBinding? = null
+    private var _binding: FragmentIngredientsBinding? = null
     private var viewModel: ListasViewModel = ListasViewModel()
 
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,17 +24,20 @@ class ElixirsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentElixirsBinding.inflate(inflater, container, false)
+
+        _binding = FragmentIngredientsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         configuraRecyclerView()
+
         return root
     }
 
     private fun configuraRecyclerView() {
-        viewModel.pegaListaElixirs()
-        viewModel.listaElixirs.observe(requireActivity()) { elixirs ->
-            binding.recyclerViewElixirs.layoutManager = LinearLayoutManager(context)
-            binding.recyclerViewElixirs.adapter = RecyclerElixirsAdapter(elixirs)
+        viewModel.pegaListaIngredients()
+        viewModel.listaIngredients.observe(requireActivity()) { ingredients ->
+            binding.recyclerViewIngredients.layoutManager = LinearLayoutManager(context)
+            binding.recyclerViewIngredients.adapter = RecyclerIngredientsAdapter(ingredients)
         }
     }
 
@@ -44,4 +45,5 @@ class ElixirsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

@@ -17,7 +17,7 @@ class HousesFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private  var housesViewModel: ListasViewModel = ListasViewModel()
+    private  var viewModel: ListasViewModel = ListasViewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,8 +32,8 @@ class HousesFragment : Fragment() {
     }
 
     private fun configuraRecyclerView() {
-        housesViewModel.pegaListaHouses()
-        housesViewModel.listaHouses.observe(requireActivity()) { houses ->
+        viewModel.pegaListaHouses()
+        viewModel.listaHouses.observe(requireActivity()) { houses ->
             binding.recyclerViewHouses.layoutManager = LinearLayoutManager(context)
             binding.recyclerViewHouses.adapter = RecyclerHousesAdapter(houses)
         }
