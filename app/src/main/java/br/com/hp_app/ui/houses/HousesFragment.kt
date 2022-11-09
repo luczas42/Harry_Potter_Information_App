@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentHousesBinding
 import br.com.hp_app.ui.adapters.RecyclerHousesAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HousesFragment : Fragment() {
 
@@ -17,7 +18,8 @@ class HousesFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private  var viewModel: ListasViewModel = ListasViewModel()
+    private val viewModel by viewModel<ListasViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

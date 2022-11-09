@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentElixirsBinding
 import br.com.hp_app.ui.adapters.RecyclerElixirsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ElixirsFragment : Fragment() {
 
     private var _binding: FragmentElixirsBinding? = null
-    private var viewModel: ListasViewModel = ListasViewModel()
+    private val viewModel by viewModel<ListasViewModel>()
+    private lateinit var adapter: RecyclerElixirsAdapter
 
 
     // This property is only valid between onCreateView and
@@ -25,17 +27,21 @@ class ElixirsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentElixirsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         configuraRecyclerView()
-        return root
+
     }
 
     private fun configuraRecyclerView() {
         viewModel.pegaListaElixirs()
         viewModel.listaElixirs.observe(requireActivity()) { elixirs ->
             binding.recyclerViewElixirs.layoutManager = LinearLayoutManager(context)
+            adapter = RecyclerElixirsAdapter(elixirs)
             binding.recyclerViewElixirs.adapter = RecyclerElixirsAdapter(elixirs)
         }
     }

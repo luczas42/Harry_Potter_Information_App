@@ -10,11 +10,13 @@ import br.com.hp_app.databinding.FragmentIngredientsBinding
 import br.com.hp_app.ui.adapters.RecyclerIngredientsAdapter
 import br.com.hp_app.ui.adapters.RecyclerSpellsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IngredientsFragment : Fragment() {
 
     private var _binding: FragmentIngredientsBinding? = null
-    private var viewModel: ListasViewModel = ListasViewModel()
+    private val viewModel by viewModel<ListasViewModel>()
+
 
     private val binding get() = _binding!!
 

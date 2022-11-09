@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentWizardsBinding
 import br.com.hp_app.ui.adapters.RecyclerWizardsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WizardsFragment : Fragment() {
 
     private var _binding: FragmentWizardsBinding? = null
-    private var viewModel: ListasViewModel = ListasViewModel()
+    private val viewModel by viewModel<ListasViewModel>()
 
     private val binding get() = _binding!!
 

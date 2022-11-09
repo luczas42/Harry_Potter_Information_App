@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentSpellsBinding
 import br.com.hp_app.ui.adapters.RecyclerSpellsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SpellsFragment : Fragment() {
 
     private var _binding: FragmentSpellsBinding? = null
-    private var viewModel: ListasViewModel = ListasViewModel()
+    private val viewModel by viewModel<ListasViewModel>()
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.

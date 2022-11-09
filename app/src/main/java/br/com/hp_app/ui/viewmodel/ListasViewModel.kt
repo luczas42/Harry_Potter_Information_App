@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hp_app.api.ApiService
+import br.com.hp_app.api.Repository
 import br.com.hp_app.api.RetrofitInicializador
 import br.com.hp_app.model.*
 import kotlinx.coroutines.launch
 
-class ListasViewModel : ViewModel() {
-    private var api : ApiService = RetrofitInicializador.apiService
+class ListasViewModel(private val repo: Repository) : ViewModel() {
 
     //Houses
     private val _listaHouses = MutableLiveData<List<Houses>>()
@@ -18,7 +18,7 @@ class ListasViewModel : ViewModel() {
 
     fun pegaListaHouses(){
         viewModelScope.launch {
-            _listaHouses.value=api.pegaHouses()
+            _listaHouses.value=repo.pegaHouses()
         }
     }
 
@@ -28,7 +28,7 @@ class ListasViewModel : ViewModel() {
 
     fun pegaListaElixirs(){
         viewModelScope.launch {
-            _listaElixirs.value = api.pegaElixirs()
+            _listaElixirs.value = repo.pegaElixirs()
         }
     }
 
@@ -38,7 +38,7 @@ class ListasViewModel : ViewModel() {
 
     fun pegaListaSpells(){
         viewModelScope.launch {
-            _listaSpells.value = api.pegaSpells()
+            _listaSpells.value = repo.pegaSpells()
         }
     }
 
@@ -48,7 +48,7 @@ class ListasViewModel : ViewModel() {
 
     fun pegaListaIngredients(){
         viewModelScope.launch {
-            _listaIngredients.value = api.pegaIngredients()
+            _listaIngredients.value = repo.pegaIngredients()
         }
     }
 
@@ -58,7 +58,7 @@ class ListasViewModel : ViewModel() {
 
     fun pegaListaWizards(){
         viewModelScope.launch {
-            _listaWizards.value = api.pegaWizards()
+            _listaWizards.value = repo.pegaWizards()
         }
     }
 }
