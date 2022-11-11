@@ -30,10 +30,15 @@ class IngredientsFragment : Fragment() {
         _binding = FragmentIngredientsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        configuraRecyclerView()
+        if (activity != null && isAdded) {
+
+            configuraRecyclerView()
+
+        }
 
         return root
     }
+
 
     private fun configuraRecyclerView() {
         viewModel.pegaListaIngredients()
@@ -45,6 +50,8 @@ class IngredientsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModel.listaIngredients.removeObservers(requireActivity())
+
         _binding = null
     }
 

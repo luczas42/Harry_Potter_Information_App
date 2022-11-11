@@ -7,18 +7,21 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
 import br.com.hp_app.model.Houses
 
-
 class RecyclerHousesAdapter(private val houses: List<Houses>) :
     Adapter<RecyclerHousesAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    lateinit var itemClickListener: (String) -> Unit
+
+    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun vincula(houses: Houses) = with(binding) {
             tvNome.text = houses.name
             tvDescricao.text = houses.animal
+            itemView.rootView.setOnClickListener {
+                itemClickListener.invoke(houses.id)
+            }
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListasRecyclerviewItemBinding.inflate(

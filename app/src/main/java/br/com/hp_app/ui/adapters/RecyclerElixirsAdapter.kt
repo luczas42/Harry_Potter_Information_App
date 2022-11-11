@@ -9,14 +9,18 @@ import br.com.hp_app.model.Elixirs
 class RecyclerElixirsAdapter(private val elixirs: List<Elixirs>) :
     RecyclerView.Adapter<RecyclerElixirsAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    lateinit var itemClickListener: (String) -> Unit
+
+    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun vincula(elixirs: Elixirs) = with(binding) {
             tvNome.text = elixirs.name
             tvDescricao.text = elixirs.effect
+            itemView.rootView.setOnClickListener{
+                itemClickListener.invoke(elixirs.name)
+            }
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListasRecyclerviewItemBinding.inflate(

@@ -46,6 +46,7 @@ class SpellsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModel.listaSpells.removeObservers(requireActivity())
         _binding = null
     }
 }

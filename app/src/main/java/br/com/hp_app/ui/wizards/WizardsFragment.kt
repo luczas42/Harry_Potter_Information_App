@@ -28,8 +28,11 @@ class WizardsFragment : Fragment() {
         _binding = FragmentWizardsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        configuraRecyclerView()
+        if (activity != null && isAdded) {
 
+            configuraRecyclerView()
+
+        }
         return root
     }
 
@@ -43,6 +46,8 @@ class WizardsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModel.listaWizards.removeObservers(requireActivity())
+
         _binding = null
     }
 

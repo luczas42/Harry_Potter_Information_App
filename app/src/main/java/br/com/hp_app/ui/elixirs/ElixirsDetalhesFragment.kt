@@ -5,16 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import br.com.hp_app.R
-import br.com.hp_app.databinding.FragmentSecondBinding
+import br.com.hp_app.databinding.FragmentDetalhesElixirsBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class ElixirsDetalhesFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentDetalhesElixirsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,9 +21,9 @@ class ElixirsDetalhesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentDetalhesElixirsBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -33,9 +31,10 @@ class ElixirsDetalhesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
+        val elixirId = requireActivity().intent.getStringExtra("elixirId")
+
+        binding.textviewSecond.text = elixirId
+
     }
 
     override fun onDestroyView() {

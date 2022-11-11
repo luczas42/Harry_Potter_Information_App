@@ -4,6 +4,8 @@ class Repository(private val retrofitCon: RetrofitInicializador) {
 
     suspend fun pegaHouses() = retrofitCon.apiService.pegaHouses()
 
+    suspend fun pegaHousesPorId(idHouse: String) = retrofitCon.apiService.pegaHousePorId(idHouse)
+
     suspend fun pegaElixirs() = retrofitCon.apiService.pegaElixirs()
 
     suspend fun pegaIngredients() = retrofitCon.apiService.pegaIngredients()
