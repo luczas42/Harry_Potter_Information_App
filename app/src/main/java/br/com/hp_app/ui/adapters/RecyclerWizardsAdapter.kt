@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
-import br.com.hp_app.model.Wizards
+import br.com.hp_app.data.model.Wizards
 
 class RecyclerWizardsAdapter(private val wizards: List<Wizards>) :
     RecyclerView.Adapter<RecyclerWizardsAdapter.ViewHolder>() {
@@ -13,9 +13,17 @@ class RecyclerWizardsAdapter(private val wizards: List<Wizards>) :
     class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun vincula(wizards: Wizards) = with(binding) {
-            tvNome.text = wizards.lastName
+            checaNomeNulo(wizards)
             tvDescricao.visibility = View.GONE
             viewDivider.visibility = View.INVISIBLE
+        }
+
+        private fun ListasRecyclerviewItemBinding.checaNomeNulo(wizards: Wizards) {
+            if (wizards.firstName != null) {
+                tvNome.text = wizards.firstName.plus(" ".plus(wizards.lastName))
+            } else {
+                tvNome.text = wizards.lastName
+            }
         }
     }
 

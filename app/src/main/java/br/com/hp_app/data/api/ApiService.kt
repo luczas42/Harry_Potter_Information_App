@@ -1,9 +1,8 @@
-package br.com.hp_app.api
+package br.com.hp_app.data.api
 
-import br.com.hp_app.model.*
+import br.com.hp_app.data.model.*
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface ApiService {
 
@@ -19,6 +18,11 @@ interface ApiService {
     @GET("/Elixirs")
     suspend fun pegaElixirs(): List<Elixirs>
 
+    @GET("/Elixirs/{id}")
+    suspend fun pegaElixirsPorId(
+        @Path("id") idElixir: String
+    ):Elixirs
+
     @GET("/Ingredients")
     suspend fun pegaIngredients(): List<Ingredients>
 
@@ -27,4 +31,5 @@ interface ApiService {
 
     @GET("/Spells")
     suspend fun pegaSpells(): List<Spells>
+
 }

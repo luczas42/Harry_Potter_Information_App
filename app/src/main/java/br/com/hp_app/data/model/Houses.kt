@@ -1,4 +1,4 @@
-package br.com.hp_app.model
+package br.com.hp_app.data.model
 
 import com.google.gson.annotations.SerializedName
 

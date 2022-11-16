@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.hp_app.databinding.DetalhesRecyclerviewItemBinding
 import br.com.hp_app.data.model.Heads
+import br.com.hp_app.data.model.Ingredients
 
-class RecyclerHeadsAdapter(private val heads: List<Heads>) :
-    Adapter<RecyclerHeadsAdapter.ViewHolder>() {
+class RecyclerElixirIngredientsAdapter(private val ingredients: List<Ingredients>) :
+    Adapter<RecyclerElixirIngredientsAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: DetalhesRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun vincula(heads: Heads) {
-            binding.rvItemName.text = heads.firstName.plus(" ").plus(heads.lastName)
+        fun vincula(ingredients: Ingredients) {
+            binding.rvItemName.text = ingredients.name
         }
-
     }
 
 
@@ -29,11 +29,11 @@ class RecyclerHeadsAdapter(private val heads: List<Heads>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.vincula(heads[position])
+        holder.vincula(ingredients[position])
     }
 
     override fun getItemCount(): Int {
-        return heads.size
+        return ingredients.size
     }
 
 }

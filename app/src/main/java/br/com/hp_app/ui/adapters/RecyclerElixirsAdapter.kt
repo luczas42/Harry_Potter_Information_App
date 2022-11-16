@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
-import br.com.hp_app.model.Elixirs
+import br.com.hp_app.data.model.Elixirs
 
 class RecyclerElixirsAdapter(private val elixirs: List<Elixirs>) :
     RecyclerView.Adapter<RecyclerElixirsAdapter.ViewHolder>() {
@@ -17,7 +17,7 @@ class RecyclerElixirsAdapter(private val elixirs: List<Elixirs>) :
             tvNome.text = elixirs.name
             tvDescricao.text = elixirs.effect
             itemView.rootView.setOnClickListener{
-                itemClickListener.invoke(elixirs.name)
+                itemClickListener.invoke(elixirs.id)
             }
         }
     }

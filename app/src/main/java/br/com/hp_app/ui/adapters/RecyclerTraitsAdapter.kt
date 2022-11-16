@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.hp_app.databinding.DetalhesRecyclerviewItemBinding
-import br.com.hp_app.model.Heads
-import br.com.hp_app.model.Traits
+import br.com.hp_app.data.model.Traits
 
 class RecyclerTraitsAdapter(private val traits: List<Traits>) :
     Adapter<RecyclerTraitsAdapter.ViewHolder>() {

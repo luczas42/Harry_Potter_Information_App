@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:name=".di.App"
+        android:name="br.com.hp_app.di.App"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -20,8 +20,7 @@
         <activity
             android:name=".ui.DetalhesActivity"
             android:exported="false"
-            android:label="@string/title_activity_detalhes"
-            android:theme="@style/Theme.Hp_app.NoActionBar" />
+            android:label="@string/title_activity_detalhes" />
         <activity
             android:name=".ui.ListaActivity"
             android:exported="true">

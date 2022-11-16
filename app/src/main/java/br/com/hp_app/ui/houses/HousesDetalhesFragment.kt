@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.hp_app.R
 import br.com.hp_app.databinding.FragmentDetalhesHousesBinding
-import br.com.hp_app.model.Houses
+import br.com.hp_app.data.model.Houses
 import br.com.hp_app.ui.adapters.RecyclerHeadsAdapter
 import br.com.hp_app.ui.adapters.RecyclerTraitsAdapter
 import br.com.hp_app.ui.viewmodel.DetalhesViewModel

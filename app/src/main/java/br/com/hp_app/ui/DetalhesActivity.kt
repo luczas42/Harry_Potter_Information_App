@@ -1,16 +1,11 @@
 package br.com.hp_app.ui
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import br.com.hp_app.R
 import br.com.hp_app.databinding.ActivityDetalhesBinding
-import com.google.android.material.snackbar.Snackbar
 
 class DetalhesActivity : AppCompatActivity() {
 
@@ -23,10 +18,34 @@ class DetalhesActivity : AppCompatActivity() {
         binding = ActivityDetalhesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        configuraToolbar()
+
+        configuraNavegacao()
+
+    }
+
+    private fun configuraNavegacao() {
         if (intent.hasExtra("elixirId")) {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_elixirs_details)
+        }else if (intent.hasExtra("housesId")) {
+            findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_houses_details)
+        }
+    }
+
+    private fun configuraToolbar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.title = ""
+        supportActionBar?.elevation = 0f
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (item.itemId == android.R.id.home){
+            finish()
         }
 
+        return super.onOptionsItemSelected(item)
     }
 
 

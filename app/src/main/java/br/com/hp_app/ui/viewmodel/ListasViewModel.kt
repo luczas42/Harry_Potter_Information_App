@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.hp_app.api.ApiService
-import br.com.hp_app.api.Repository
-import br.com.hp_app.api.RetrofitInicializador
-import br.com.hp_app.model.*
+import br.com.hp_app.data.api.Repository
+import br.com.hp_app.data.model.*
 import kotlinx.coroutines.launch
 
 class ListasViewModel(private val repo: Repository) : ViewModel() {

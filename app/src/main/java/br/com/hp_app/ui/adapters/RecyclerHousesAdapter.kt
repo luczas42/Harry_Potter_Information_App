@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
-import br.com.hp_app.model.Houses
+import br.com.hp_app.data.model.Houses
 
 class RecyclerHousesAdapter(private val houses: List<Houses>) :
     Adapter<RecyclerHousesAdapter.ViewHolder>() {

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
-import br.com.hp_app.model.Ingredients
+import br.com.hp_app.data.model.Ingredients
 
 class RecyclerIngredientsAdapter(private val ingredients: List<Ingredients>) :
     RecyclerView.Adapter<RecyclerIngredientsAdapter.ViewHolder>() {

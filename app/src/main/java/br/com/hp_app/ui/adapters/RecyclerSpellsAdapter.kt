@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
-import br.com.hp_app.model.Spells
+import br.com.hp_app.data.model.Spells
 
 class RecyclerSpellsAdapter(private val spells: List<Spells>) :
     RecyclerView.Adapter<RecyclerSpellsAdapter.ViewHolder>() {
