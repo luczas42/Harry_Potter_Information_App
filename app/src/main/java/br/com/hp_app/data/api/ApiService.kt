@@ -31,5 +31,10 @@ interface ApiService {
 
     @GET("/Spells")
     suspend fun pegaSpells(): List<Spells>
+    @GET("/Spells/{id}")
+
+    suspend fun pegaSpellsPorId(
+        @Path("id") idSpell: String
+    ): Spells
 
 }

@@ -29,6 +29,8 @@ class DetalhesActivity : AppCompatActivity() {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_elixirs_details)
         }else if (intent.hasExtra("housesId")) {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_houses_details)
+        }else if (intent.hasExtra("spellId")){
+            findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_spells_details)
         }
     }
 

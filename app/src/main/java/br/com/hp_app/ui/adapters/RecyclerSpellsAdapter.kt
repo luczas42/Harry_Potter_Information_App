@@ -9,11 +9,16 @@ import br.com.hp_app.data.model.Spells
 class RecyclerSpellsAdapter(private val spells: List<Spells>) :
     RecyclerView.Adapter<RecyclerSpellsAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    lateinit var itemClickListener: (String) -> Unit
+
+    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun vincula(spells: Spells) = with(binding) {
             tvNome.text = spells.name
             tvDescricao.text = spells.effect
+            itemView.rootView.setOnClickListener {
+                itemClickListener.invoke(spells.id)
+            }
         }
     }
 

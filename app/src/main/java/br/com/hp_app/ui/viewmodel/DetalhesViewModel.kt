@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.hp_app.data.api.Repository
 import br.com.hp_app.data.model.Elixirs
 import br.com.hp_app.data.model.Houses
+import br.com.hp_app.data.model.Spells
 import kotlinx.coroutines.launch
 
 class DetalhesViewModel(private val repo: Repository) : ViewModel() {
@@ -30,6 +31,17 @@ class DetalhesViewModel(private val repo: Repository) : ViewModel() {
         viewModelScope.launch {
             val elixir: Elixirs = repo.pegaElixirsPorId(idElixir)
             _selectedElixir.value = elixir
+        }
+    }
+
+    //Spells
+    private val _selectedSpell = MutableLiveData<Spells>()
+    val selectedSpell: LiveData<Spells> = _selectedSpell
+
+    fun pegaSpellSepecionado(idSpell: String){
+        viewModelScope.launch {
+            val spell: Spells = repo.pegaSpellPorId(idSpell)
+            _selectedSpell.value = spell
         }
     }
 }

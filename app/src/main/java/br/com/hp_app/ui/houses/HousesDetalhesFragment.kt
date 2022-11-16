@@ -15,9 +15,6 @@ import br.com.hp_app.ui.adapters.RecyclerTraitsAdapter
 import br.com.hp_app.ui.viewmodel.DetalhesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class HousesDetalhesFragment : Fragment() {
 
     private val viewModel by viewModel<DetalhesViewModel>()

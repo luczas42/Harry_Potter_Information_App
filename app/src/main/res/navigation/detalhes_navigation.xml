@@ -15,4 +15,9 @@
         android:name="br.com.hp_app.ui.elixirs.ElixirsDetalhesFragment"
         android:label="@string/elixirs_label"
         tools:layout="@layout/fragment_detalhes_elixirs"/>
+    <fragment
+        android:id="@+id/navigation_spells_details"
+        android:name="br.com.hp_app.ui.spells.SpellsDetalhesFragment"
+        android:label="Spells"
+        tools:layout="@layout/fragment_detalhes_spells"/>
 </navigation>
