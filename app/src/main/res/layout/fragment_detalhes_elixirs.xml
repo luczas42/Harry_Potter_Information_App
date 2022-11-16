@@ -20,9 +20,11 @@
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:textColor="@color/textOnP"
             android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +58,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvEffects"
         app:layout_constraintTop_toBottomOf="@+id/tvEffects"
-        tools:text="Effect" />
+        android:text="@string/default_unknown"/>
 
     <View
         android:id="@+id/animalViewDivider"
@@ -99,7 +101,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvSideEffect"
         app:layout_constraintTop_toBottomOf="@+id/tvSideEffect"
-        tools:text="Side Effects" />
+        android:text="@string/default_unknown"/>
 
     <View
         android:id="@+id/founderViewDivider"
@@ -127,7 +129,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvCharacteristics"
         app:layout_constraintTop_toBottomOf="@+id/tvCharacteristics"
-        tools:text="Characteristics" />
+        android:text="@string/default_unknown"/>
 
     <View
         android:id="@+id/elementViewDivider"
@@ -168,7 +170,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvTime"
         app:layout_constraintTop_toBottomOf="@+id/tvTime"
-        tools:text="Nearly-Headless Nick" />
+        android:text="@string/default_unknown"/>
 
     <View
         android:id="@+id/ghostViewDivider"
@@ -235,7 +237,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvDifficulty"
         app:layout_constraintTop_toBottomOf="@+id/tvDifficulty"
-        tools:text="Gryffindor Tower" />
+        android:text="@string/default_unknown"/>
 
     <!--    Heads-->
     <TextView
@@ -259,8 +261,8 @@
         android:overScrollMode="never"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        tools:itemCount="3"
+        app:spanCount="2"
+        tools:itemCount="5"
         app:layout_constraintTop_toBottomOf="@id/tvIngredients"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -297,21 +299,62 @@
         android:text="Inventors" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:overScrollMode="never"
         android:id="@+id/rvInventors"
         tools:listitem="@layout/detalhes_recyclerview_item"
         android:layout_marginTop="4dp"
         android:layout_width="wrap_content"
+        android:overScrollMode="never"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:spanCount="3"
-        tools:itemCount="3"
+        app:spanCount="2"
+        tools:itemCount="5"
         app:layout_constraintTop_toBottomOf="@id/tvInventors"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        />
+        android:layout_marginEnd="24dp"/>
+
+    <View
+        android:id="@+id/InventorsViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:foreground="@drawable/barra_separadora"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvInventors"
+        tools:ignore="UnusedAttribute" />
+
+    <!--    Manufacturer-->
+    <TextView
+        android:id="@+id/tvManufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/InventorsViewDivider"
+        android:text="Manufacturer" />
+
+    <TextView
+        android:id="@+id/tvManufacturerDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvManufacturer"
+        app:layout_constraintTop_toBottomOf="@+id/tvManufacturer"
+        android:text="@string/default_unknown"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

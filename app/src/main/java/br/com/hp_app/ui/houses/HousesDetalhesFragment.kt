@@ -63,7 +63,7 @@ class HousesDetalhesFragment : Fragment() {
     }
 
     private fun configuraTraitsRecyclerView(house: Houses) {
-        binding.rvTraits.layoutManager = GridLayoutManager(context, 3)
+        binding.rvTraits.layoutManager = GridLayoutManager(context, 2)
         traitsAdapter = RecyclerTraitsAdapter(house.traits)
         binding.rvTraits.adapter = traitsAdapter
     }
