@@ -1,4 +1,4 @@
-package br.com.hp_app.ui.spells
+package br.com.hp_app.ui.wizards
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,23 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.hp_app.databinding.FragmentSpellsBinding
+import br.com.hp_app.databinding.FragmentWizardsBinding
 import br.com.hp_app.ui.DetalhesActivity
-import br.com.hp_app.ui.adapters.RecyclerHousesAdapter
-import br.com.hp_app.ui.adapters.RecyclerSpellsAdapter
+import br.com.hp_app.ui.adapters.RecyclerWizardsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SpellsFragment : Fragment() {
+class WizardsFragment : Fragment() {
 
-    private var _binding: FragmentSpellsBinding? = null
+    private var _binding: FragmentWizardsBinding? = null
     private val viewModel by viewModel<ListasViewModel>()
-    private lateinit var adapter: RecyclerSpellsAdapter
+    private lateinit var adapter: RecyclerWizardsAdapter
 
 
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,8 +28,7 @@ class SpellsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
-        _binding = FragmentSpellsBinding.inflate(inflater, container, false)
+        _binding = FragmentWizardsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         configuraRecyclerView()
@@ -42,14 +37,14 @@ class SpellsFragment : Fragment() {
     }
 
     private fun configuraRecyclerView() {
-        viewModel.pegaListaSpells()
-        viewModel.listaSpells.observe(requireActivity()) { spells ->
-            binding.recyclerViewSpells.layoutManager = LinearLayoutManager(context)
-            adapter = RecyclerSpellsAdapter(spells)
-            binding.recyclerViewSpells.adapter = adapter
-            adapter.itemClickListener = { spellId ->
+        viewModel.pegaListaWizards()
+        viewModel.listaWizards.observe(requireActivity()) { wizards ->
+            binding.recyclerViewWizards.layoutManager = LinearLayoutManager(context)
+            adapter = RecyclerWizardsAdapter(wizards)
+            binding.recyclerViewWizards.adapter = adapter
+            adapter.itemClickListener = { wizardId ->
                 val intent = Intent(activity, DetalhesActivity::class.java)
-                intent.putExtra("spellId", spellId)
+                intent.putExtra("wizardId", wizardId)
                 startActivity(intent)
             }
         }
@@ -57,7 +52,9 @@ class SpellsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.listaSpells.removeObservers(requireActivity())
+        viewModel.listaWizards.removeObservers(requireActivity())
+
         _binding = null
     }
+
 }

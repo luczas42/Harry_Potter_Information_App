@@ -1,4 +1,4 @@
-package br.com.hp_app.ui.elixirs
+package br.com.hp_app.ui.ingredients
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.hp_app.databinding.FragmentElixirsBinding
+import br.com.hp_app.databinding.FragmentIngredientsBinding
 import br.com.hp_app.ui.DetalhesActivity
-import br.com.hp_app.ui.adapters.RecyclerElixirsAdapter
+import br.com.hp_app.ui.adapters.RecyclerIngredientsAdapter
+import br.com.hp_app.ui.adapters.RecyclerSpellsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ElixirsFragment : Fragment() {
+class IngredientsFragment : Fragment() {
 
-    private var _binding: FragmentElixirsBinding? = null
-
+    private var _binding: FragmentIngredientsBinding? = null
     private val viewModel by viewModel<ListasViewModel>()
+    private lateinit var adapter: RecyclerIngredientsAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private lateinit var adapter: RecyclerElixirsAdapter
+
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -29,8 +29,11 @@ class ElixirsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentElixirsBinding.inflate(inflater, container, false)
+
+
+        _binding = FragmentIngredientsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         if (activity != null && isAdded) {
 
             configuraRecyclerView()
@@ -40,15 +43,16 @@ class ElixirsFragment : Fragment() {
         return root
     }
 
+
     private fun configuraRecyclerView() {
-        viewModel.pegaListaElixirs()
-        viewModel.listaElixirs.observe(requireActivity()) { elixirs ->
-            binding.recyclerViewElixirs.layoutManager = LinearLayoutManager(context)
-            adapter = RecyclerElixirsAdapter(elixirs)
-            binding.recyclerViewElixirs.adapter = adapter
-            adapter.itemClickListener = { elixirId ->
+        viewModel.pegaListaIngredients()
+        viewModel.listaIngredients.observe(requireActivity()) { ingredients ->
+            binding.recyclerViewIngredients.layoutManager = LinearLayoutManager(context)
+            adapter = RecyclerIngredientsAdapter(ingredients)
+            binding.recyclerViewIngredients.adapter = adapter
+            adapter.itemClickListener = { ingredientId ->
                 val intent = Intent(activity, DetalhesActivity::class.java)
-                intent.putExtra("elixirId", elixirId)
+                intent.putExtra("ingredientId", ingredientId)
                 startActivity(intent)
             }
         }
@@ -56,8 +60,9 @@ class ElixirsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.listaElixirs.removeObservers(requireActivity())
+        viewModel.listaIngredients.removeObservers(requireActivity())
 
         _binding = null
     }
+
 }

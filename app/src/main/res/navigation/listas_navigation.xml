@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_dashboard">
+    app:startDestination="@id/navigation_elixirs">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_houses"
         android:name="br.com.hp_app.ui.houses.HousesFragment"
-        android:label="@string/title_elixirs"
+        android:label="@string/title_houses"
         tools:layout="@layout/fragment_houses" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_elixirs"
         android:name="br.com.hp_app.ui.elixirs.ElixirsFragment"
-        android:label="@string/title_houses"
+        android:label="@string/title_elixirs"
         tools:layout="@layout/fragment_elixirs" />
 
     <fragment
@@ -22,4 +22,14 @@
         android:name="br.com.hp_app.ui.spells.SpellsFragment"
         android:label="@string/title_spells"
         tools:layout="@layout/fragment_spells" />
+    <fragment
+        android:id="@+id/navigation_ingredients"
+        android:name="br.com.hp_app.ui.ingredients.IngredientsFragment"
+        android:label="Ingredients"
+        tools:layout="@layout/fragment_ingredients" />
+    <fragment
+        android:id="@+id/navigation_wizards"
+        android:name="br.com.hp_app.ui.wizards.WizardsFragment"
+        android:label="Wizards"
+        tools:layout="@layout/fragment_wizards" />
 </navigation>
