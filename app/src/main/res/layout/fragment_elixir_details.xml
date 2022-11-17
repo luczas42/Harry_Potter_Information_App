@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetalhesActivity">
+    tools:context=".ui.DetailsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topo"
@@ -65,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="8dp"
-        android:foreground="@drawable/barra_separadora"
+        android:foreground="@drawable/divider_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginEnd="16dp"
@@ -76,7 +76,7 @@
 
     <!--    Side Effects-->
     <TextView
-        android:id="@+id/tvIncantation"
+        android:id="@+id/tvSideEffect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -86,11 +86,11 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/animalViewDivider"
-        android:text="Incantation" />
+        android:text="Side Effects" />
 
 
     <TextView
-        android:id="@+id/tvIncantationescription"
+        android:id="@+id/tvSideEffectsDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -99,8 +99,8 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/tvIncantation"
-        app:layout_constraintTop_toBottomOf="@+id/tvIncantation"
+        app:layout_constraintStart_toStartOf="@id/tvSideEffect"
+        app:layout_constraintTop_toBottomOf="@+id/tvSideEffect"
         android:text="@string/default_unknown"/>
 
     <View
@@ -108,17 +108,17 @@
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="8dp"
-        android:foreground="@drawable/barra_separadora"
+        android:foreground="@drawable/divider_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvIncantationescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvSideEffectsDescription"
         tools:ignore="UnusedAttribute" />
 
     <!--    Characteristics-->
     <TextView
-        android:id="@+id/tvCanBeVerbalDescription"
+        android:id="@+id/tvCharacteristicsDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -127,8 +127,8 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/tvCanBeVerbal"
-        app:layout_constraintTop_toBottomOf="@+id/tvCanBeVerbal"
+        app:layout_constraintStart_toStartOf="@id/tvCharacteristics"
+        app:layout_constraintTop_toBottomOf="@+id/tvCharacteristics"
         android:text="@string/default_unknown"/>
 
     <View
@@ -139,13 +139,13 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:foreground="@drawable/barra_separadora"
+        android:foreground="@drawable/divider_line"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCanBeVerbalDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvCharacteristicsDescription"
         tools:ignore="UnusedAttribute" />
 
     <TextView
-        android:id="@+id/tvCanBeVerbal"
+        android:id="@+id/tvCharacteristics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -155,11 +155,11 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/founderViewDivider"
-        android:text="Can be Verbal" />
+        android:text="Characteristics" />
 
     <!--    Time-->
     <TextView
-        android:id="@+id/tvTypeDescription"
+        android:id="@+id/tvTimeDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -168,8 +168,8 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/tvType"
-        app:layout_constraintTop_toBottomOf="@+id/tvType"
+        app:layout_constraintStart_toStartOf="@id/tvTime"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime"
         android:text="@string/default_unknown"/>
 
     <View
@@ -177,16 +177,16 @@
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:layout_marginTop="8dp"
-        android:foreground="@drawable/barra_separadora"
+        android:foreground="@drawable/divider_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvTypeDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvTimeDescription"
         tools:ignore="UnusedAttribute" />
 
     <TextView
-        android:id="@+id/tvType"
+        android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -196,11 +196,11 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/elementViewDivider"
-        android:text="Type" />
+        android:text="Time" />
 
     <!--    Difficulty-->
     <TextView
-        android:id="@+id/tvLight"
+        android:id="@+id/tvDifficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -210,7 +210,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ghostViewDivider"
-        android:text="Light" />
+        android:text="Difficulty" />
 
     <View
         android:id="@+id/commonRoomViewDivider"
@@ -220,13 +220,13 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:foreground="@drawable/barra_separadora"
+        android:foreground="@drawable/divider_line"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLightDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvDifficultyDescription"
         tools:ignore="UnusedAttribute" />
 
     <TextView
-        android:id="@+id/tvLightDescription"
+        android:id="@+id/tvDifficultyDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -235,13 +235,13 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/tvLight"
-        app:layout_constraintTop_toBottomOf="@+id/tvLight"
+        app:layout_constraintStart_toStartOf="@id/tvDifficulty"
+        app:layout_constraintTop_toBottomOf="@+id/tvDifficulty"
         android:text="@string/default_unknown"/>
 
-    <!--    Manufacturer-->
+    <!--    Heads-->
     <TextView
-        android:id="@+id/tvCreator"
+        android:id="@+id/tvIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -251,10 +251,98 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/commonRoomViewDivider"
-        android:text="Creator" />
+        android:text="Ingredients" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/details_recyclerview_item"
+        android:id="@+id/rvIngredients"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:overScrollMode="never"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="5"
+        app:layout_constraintTop_toBottomOf="@id/tvIngredients"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        />
+
+    <View
+        android:id="@+id/headsViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:foreground="@drawable/divider_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvIngredients"
+        tools:ignore="UnusedAttribute" />
+
+
+    <!--    Traits-->
+    <TextView
+        android:id="@+id/tvInventors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headsViewDivider"
+        android:text="Inventors" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvInventors"
+        tools:listitem="@layout/details_recyclerview_item"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:overScrollMode="never"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        tools:itemCount="5"
+        app:layout_constraintTop_toBottomOf="@id/tvInventors"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <View
+        android:id="@+id/InventorsViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:foreground="@drawable/divider_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvInventors"
+        tools:ignore="UnusedAttribute" />
+
+    <!--    Manufacturer-->
+    <TextView
+        android:id="@+id/tvManufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/InventorsViewDivider"
+        android:text="Manufacturer" />
 
     <TextView
-        android:id="@+id/tvCreatorDescription"
+        android:id="@+id/tvManufacturerDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -263,8 +351,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/tvCreator"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreator"
+        app:layout_constraintStart_toStartOf="@id/tvManufacturer"
+        app:layout_constraintTop_toBottomOf="@+id/tvManufacturer"
         android:text="@string/default_unknown"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

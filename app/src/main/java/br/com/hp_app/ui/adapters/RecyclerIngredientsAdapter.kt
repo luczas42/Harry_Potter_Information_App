@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
 import br.com.hp_app.data.model.Ingredients
+import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
 class RecyclerIngredientsAdapter(private val ingredients: List<Ingredients>) :
     RecyclerView.Adapter<RecyclerIngredientsAdapter.ViewHolder>() {
 
     lateinit var itemClickListener: (String) -> Unit
 
-    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    inner class ViewHolder(private val binding: ListsRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun vincula(ingredients: Ingredients) = with(binding) {
+        fun bind(ingredients: Ingredients) = with(binding) {
             tvNome.text = ingredients.name
             tvDescricao.visibility = View.GONE
             viewDivider.visibility = View.INVISIBLE
@@ -27,7 +27,7 @@ class RecyclerIngredientsAdapter(private val ingredients: List<Ingredients>) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ListasRecyclerviewItemBinding.inflate(
+        val binding = ListsRecyclerviewItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -36,7 +36,7 @@ class RecyclerIngredientsAdapter(private val ingredients: List<Ingredients>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.vincula(ingredients[position])
+        holder.bind(ingredients[position])
     }
 
     override fun getItemCount(): Int {

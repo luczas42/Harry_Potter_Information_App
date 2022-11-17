@@ -7,17 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.hp_app.data.model.Elixirs
 import br.com.hp_app.databinding.FragmentElixirsBinding
-import br.com.hp_app.ui.DetalhesActivity
+import br.com.hp_app.ui.DetailsActivity
 import br.com.hp_app.ui.adapters.RecyclerElixirsAdapter
-import br.com.hp_app.ui.viewmodel.ListasViewModel
+import br.com.hp_app.ui.viewmodel.ListsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ElixirsFragment : Fragment() {
 
     private var _binding: FragmentElixirsBinding? = null
 
-    private val viewModel by viewModel<ListasViewModel>()
+    private val viewModel by viewModel<ListsViewModel>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,32 +32,37 @@ class ElixirsFragment : Fragment() {
     ): View {
         _binding = FragmentElixirsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        if (activity != null && isAdded) {
 
-            configuraRecyclerView()
-
-        }
+        setupRecyclerView()
 
         return root
     }
 
-    private fun configuraRecyclerView() {
-        viewModel.pegaListaElixirs()
-        viewModel.listaElixirs.observe(requireActivity()) { elixirs ->
+    private fun setupRecyclerView() {
+        viewModel.getElixirList()
+        viewModel.elixirList.observe(requireActivity()) { elixirs ->
             binding.recyclerViewElixirs.layoutManager = LinearLayoutManager(context)
-            adapter = RecyclerElixirsAdapter(elixirs)
-            binding.recyclerViewElixirs.adapter = adapter
-            adapter.itemClickListener = { elixirId ->
-                val intent = Intent(activity, DetalhesActivity::class.java)
-                intent.putExtra("elixirId", elixirId)
-                startActivity(intent)
-            }
+            setAdapter(elixirs)
+            setItemClickListener()
         }
+    }
+
+    private fun setItemClickListener() {
+        adapter.itemClickListener = { elixirId ->
+            val intent = Intent(activity, DetailsActivity::class.java)
+            intent.putExtra("elixirId", elixirId)
+            startActivity(intent)
+        }
+    }
+
+    private fun setAdapter(elixirs: List<Elixirs>) {
+        adapter = RecyclerElixirsAdapter(elixirs)
+        binding.recyclerViewElixirs.adapter = adapter
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.listaElixirs.removeObservers(requireActivity())
+        viewModel.elixirList.removeObservers(requireActivity())
 
         _binding = null
     }

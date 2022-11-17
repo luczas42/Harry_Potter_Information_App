@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import br.com.hp_app.data.model.Wizards
 import br.com.hp_app.databinding.FragmentWizardDetailsBinding
 import br.com.hp_app.ui.adapters.RecyclerWizardElixirsAdapter
-import br.com.hp_app.ui.viewmodel.DetalhesViewModel
+import br.com.hp_app.ui.viewmodel.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class WizardDetailsFragment : Fragment() {
 
-    private val viewModel by viewModel<DetalhesViewModel>()
+    private val viewModel by viewModel<DetailsViewModel>()
 
     private var _binding: FragmentWizardDetailsBinding? = null
 
@@ -33,19 +33,19 @@ class WizardDetailsFragment : Fragment() {
 
         getSelectedSpell()
 
-        populaCampos()
+        populateFields()
 
         return binding.root
     }
 
-    private fun populaCampos() {
+    private fun populateFields() {
         viewModel.selectedWizard.observe(requireActivity()) { wizard ->
             if (wizard.firstName != null) {
                 binding.tvName.text = wizard.firstName.plus(" ".plus(wizard.lastName))
             } else {
                 binding.tvName.text = wizard.lastName
             }
-            configureElixirsRecyclerView(wizard)
+            setupElixirsRecyclerView(wizard)
         }
     }
 
@@ -54,8 +54,12 @@ class WizardDetailsFragment : Fragment() {
             ?.let { viewModel.getSelectedWizard(it) }
     }
 
-    private fun configureElixirsRecyclerView(wizards: Wizards) {
+    private fun setupElixirsRecyclerView(wizards: Wizards) {
         binding.rvElixirs.layoutManager = GridLayoutManager(context, 2)
+        setElixirsAdapter(wizards)
+    }
+
+    private fun setElixirsAdapter(wizards: Wizards) {
         elixirsAdapter = RecyclerWizardElixirsAdapter(wizards.elixirs)
         binding.rvElixirs.adapter = elixirsAdapter
     }

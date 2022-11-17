@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetalhesActivity">
+    tools:context=".ui.DetailsActivity">
 <!--    -->
 <!--    <androidx.appcompat.widget.Toolbar-->
 <!--        android:id="@+id/detalhes_toolbar"-->
@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/detalhes_navigation"
+        app:navGraph="@navigation/details_navigation"
         tools:ignore="FragmentTagUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,15 +8,15 @@ import br.com.hp_app.data.api.Repository
 import br.com.hp_app.data.model.*
 import kotlinx.coroutines.launch
 
-class DetalhesViewModel(private val repo: Repository) : ViewModel() {
+class DetailsViewModel(private val repo: Repository) : ViewModel() {
 
     //Houses
     private val _selectedHouse = MutableLiveData<Houses>()
     val selectedHouse: LiveData<Houses> = _selectedHouse
 
-    fun pegaHouseSelecionada(idHouse: String) {
+    fun getSelectedHouse(idHouse: String) {
         viewModelScope.launch {
-            val houses: Houses = repo.pegaHousesPorId(idHouse)
+            val houses: Houses = repo.getHousesById(idHouse)
             _selectedHouse.value = houses
         }
     }
@@ -25,9 +25,9 @@ class DetalhesViewModel(private val repo: Repository) : ViewModel() {
     private val _selectedElixir = MutableLiveData<Elixirs>()
     val selectedElixir: LiveData<Elixirs> = _selectedElixir
 
-    fun pegaElixirSelecionado(idElixir: String) {
+    fun getSelectedElixir(idElixir: String) {
         viewModelScope.launch {
-            val elixir: Elixirs = repo.pegaElixirsPorId(idElixir)
+            val elixir: Elixirs = repo.getElixirsById(idElixir)
             _selectedElixir.value = elixir
         }
     }
@@ -36,9 +36,9 @@ class DetalhesViewModel(private val repo: Repository) : ViewModel() {
     private val _selectedSpell = MutableLiveData<Spells>()
     val selectedSpell: LiveData<Spells> = _selectedSpell
 
-    fun pegaSpellSepecionado(idSpell: String) {
+    fun getSelectedSpell(idSpell: String) {
         viewModelScope.launch {
-            val spell: Spells = repo.pegaSpellPorId(idSpell)
+            val spell: Spells = repo.getSpellsById(idSpell)
             _selectedSpell.value = spell
         }
     }

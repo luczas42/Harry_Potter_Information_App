@@ -8,23 +8,23 @@ interface ApiService {
 
     @GET("/Houses")
 
-    suspend fun pegaHouses(): List<Houses>
+    suspend fun getHouses(): List<Houses>
 
     @GET("/Houses/{id}")
-    suspend fun pegaHousePorId(
+    suspend fun getHousesById(
         @Path("id") idHouse: String
     ): Houses
 
     @GET("/Elixirs")
-    suspend fun pegaElixirs(): List<Elixirs>
+    suspend fun getElixirs(): List<Elixirs>
 
     @GET("/Elixirs/{id}")
-    suspend fun pegaElixirsPorId(
+    suspend fun getElixirsById(
         @Path("id") idElixir: String
-    ):Elixirs
+    ): Elixirs
 
     @GET("/Ingredients")
-    suspend fun pegaIngredients(): List<Ingredients>
+    suspend fun getIngredients(): List<Ingredients>
 
     @GET("/Ingredients/{id}")
     suspend fun getIngredientById(
@@ -32,18 +32,18 @@ interface ApiService {
     ): Ingredients
 
     @GET("/Wizards")
-    suspend fun pegaWizards(): List<Wizards>
+    suspend fun getWizards(): List<Wizards>
 
     @GET("/Wizards/{id}")
     suspend fun getWizardById(
-        @Path("id")wizardId: String
+        @Path("id") wizardId: String
     ): Wizards
 
     @GET("/Spells")
-    suspend fun pegaSpells(): List<Spells>
+    suspend fun getSpells(): List<Spells>
 
     @GET("/Spells/{id}")
-    suspend fun pegaSpellsPorId(
+    suspend fun getSpellsById(
         @Path("id") idSpell: String
     ): Spells
 

@@ -3,27 +3,27 @@ package br.com.hp_app.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
 import br.com.hp_app.data.model.Elixirs
+import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
 class RecyclerElixirsAdapter(private val elixirs: List<Elixirs>) :
     RecyclerView.Adapter<RecyclerElixirsAdapter.ViewHolder>() {
 
     lateinit var itemClickListener: (String) -> Unit
 
-    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    inner class ViewHolder(private val binding: ListsRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun vincula(elixirs: Elixirs) = with(binding) {
+        fun bind(elixirs: Elixirs) = with(binding) {
             tvNome.text = elixirs.name
             tvDescricao.text = elixirs.effect
-            itemView.rootView.setOnClickListener{
+            itemView.rootView.setOnClickListener {
                 itemClickListener.invoke(elixirs.id)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ListasRecyclerviewItemBinding.inflate(
+        val binding = ListsRecyclerviewItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -32,7 +32,7 @@ class RecyclerElixirsAdapter(private val elixirs: List<Elixirs>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.vincula(elixirs[position])
+        holder.bind(elixirs[position])
     }
 
     override fun getItemCount(): Int {

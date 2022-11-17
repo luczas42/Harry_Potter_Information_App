@@ -5,23 +5,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.hp_app.data.model.Elixirs
-import br.com.hp_app.databinding.DetalhesRecyclerviewItemBinding
-import br.com.hp_app.data.model.Heads
-import br.com.hp_app.data.model.Ingredients
+import br.com.hp_app.databinding.DetailsRecyclerviewItemBinding
 
 class RecyclerWizardElixirsAdapter(private val elixirs: List<Elixirs>) :
     Adapter<RecyclerWizardElixirsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: DetalhesRecyclerviewItemBinding) :
+    inner class ViewHolder(private val binding: DetailsRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun vincula(elixirs: Elixirs) {
+        fun bind(elixirs: Elixirs) {
             binding.rvItemName.text = elixirs.name
         }
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = DetalhesRecyclerviewItemBinding.inflate(
+        val binding = DetailsRecyclerviewItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -30,7 +28,7 @@ class RecyclerWizardElixirsAdapter(private val elixirs: List<Elixirs>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.vincula(elixirs[position])
+        holder.bind(elixirs[position])
     }
 
     override fun getItemCount(): Int {

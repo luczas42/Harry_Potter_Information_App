@@ -8,16 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentSpellsBinding
-import br.com.hp_app.ui.DetalhesActivity
-import br.com.hp_app.ui.adapters.RecyclerHousesAdapter
+import br.com.hp_app.ui.DetailsActivity
 import br.com.hp_app.ui.adapters.RecyclerSpellsAdapter
-import br.com.hp_app.ui.viewmodel.ListasViewModel
+import br.com.hp_app.ui.viewmodel.ListsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SpellsFragment : Fragment() {
 
     private var _binding: FragmentSpellsBinding? = null
-    private val viewModel by viewModel<ListasViewModel>()
+    private val viewModel by viewModel<ListsViewModel>()
     private lateinit var adapter: RecyclerSpellsAdapter
 
 
@@ -42,13 +41,13 @@ class SpellsFragment : Fragment() {
     }
 
     private fun configuraRecyclerView() {
-        viewModel.pegaListaSpells()
-        viewModel.listaSpells.observe(requireActivity()) { spells ->
+        viewModel.getSpellList()
+        viewModel.spellList.observe(requireActivity()) { spells ->
             binding.recyclerViewSpells.layoutManager = LinearLayoutManager(context)
             adapter = RecyclerSpellsAdapter(spells)
             binding.recyclerViewSpells.adapter = adapter
             adapter.itemClickListener = { spellId ->
-                val intent = Intent(activity, DetalhesActivity::class.java)
+                val intent = Intent(activity, DetailsActivity::class.java)
                 intent.putExtra("spellId", spellId)
                 startActivity(intent)
             }
@@ -57,7 +56,7 @@ class SpellsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.listaSpells.removeObservers(requireActivity())
+        viewModel.spellList.removeObservers(requireActivity())
         _binding = null
     }
 }

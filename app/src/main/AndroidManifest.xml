@@ -18,11 +18,11 @@
         android:theme="@style/Theme.Hp_app"
         tools:targetApi="31">
         <activity
-            android:name=".ui.DetalhesActivity"
+            android:name=".ui.DetailsActivity"
             android:exported="false"
             android:label="@string/title_activity_detalhes" />
         <activity
-            android:name=".ui.ListaActivity"
+            android:name=".ui.ListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

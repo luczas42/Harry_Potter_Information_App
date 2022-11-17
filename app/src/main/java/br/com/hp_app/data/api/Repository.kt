@@ -6,34 +6,35 @@ import br.com.hp_app.data.model.Wizards
 
 class Repository(private val retrofitCon: RetrofitInicializador) {
 
-    suspend fun pegaHouses() =
-        retrofitCon.apiService.pegaHouses()
+    suspend fun getHouses() =
+        retrofitCon.apiService.getHouses()
 
-    suspend fun pegaHousesPorId(idHouse: String) =
-        retrofitCon.apiService.pegaHousePorId(idHouse)
+    suspend fun getHousesById(idHouse: String) =
+        retrofitCon.apiService.getHousesById(idHouse)
 
-    suspend fun pegaElixirs() =
-        retrofitCon.apiService.pegaElixirs()
+    suspend fun getElixirs() =
+        retrofitCon.apiService.getElixirs()
 
-    suspend fun pegaElixirsPorId(idElixir: String) =
-        retrofitCon.apiService.pegaElixirsPorId(idElixir)
+    suspend fun getElixirsById(idElixir: String) =
+        retrofitCon.apiService.getElixirsById(idElixir)
 
-    suspend fun pegaIngredients() =
-        retrofitCon.apiService.pegaIngredients()
+    suspend fun getIngredients() =
+        retrofitCon.apiService.getIngredients()
 
-    suspend fun pegaWizards() =
-        retrofitCon.apiService.pegaWizards()
+    suspend fun getIngredientById(ingredientId: String): Ingredients =
+        retrofitCon.apiService.getIngredientById(ingredientId)
 
-    suspend fun pegaSpells() =
-        retrofitCon.apiService.pegaSpells()
-
-    suspend fun pegaSpellPorId(idSpell: String): Spells =
-        retrofitCon.apiService.pegaSpellsPorId(idSpell)
+    suspend fun getWizards() =
+        retrofitCon.apiService.getWizards()
 
     suspend fun getWizardById(wizardId: String): Wizards =
         retrofitCon.apiService.getWizardById(wizardId)
 
-    suspend fun getIngredientById(ingredientId: String): Ingredients =
-        retrofitCon.apiService.getIngredientById(ingredientId)
+    suspend fun getSpells() =
+        retrofitCon.apiService.getSpells()
+
+    suspend fun getSpellsById(idSpell: String): Spells =
+        retrofitCon.apiService.getSpellsById(idSpell)
+
 
 }

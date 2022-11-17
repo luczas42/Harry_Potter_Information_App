@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import br.com.hp_app.databinding.FragmentDetalhesSpellsBinding
-import br.com.hp_app.ui.viewmodel.DetalhesViewModel
+import br.com.hp_app.databinding.FragmentSpellDetailsBinding
+import br.com.hp_app.ui.viewmodel.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class SpellsDetalhesFragment : Fragment() {
+class SpellDetailsFragment : Fragment() {
 
-    private val viewModel by viewModel<DetalhesViewModel>()
+    private val viewModel by viewModel<DetailsViewModel>()
 
-    private var _binding: FragmentDetalhesSpellsBinding? = null
+    private var _binding: FragmentSpellDetailsBinding? = null
 
     private val binding get() = _binding!!
 
@@ -23,7 +23,7 @@ class SpellsDetalhesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentDetalhesSpellsBinding.inflate(inflater, container, false)
+        _binding = FragmentSpellDetailsBinding.inflate(inflater, container, false)
 
         pegaSpellSelecionada()
 
@@ -46,7 +46,7 @@ class SpellsDetalhesFragment : Fragment() {
 
     private fun pegaSpellSelecionada() {
         requireActivity().intent.getStringExtra("spellId")
-            ?.let { viewModel.pegaSpellSepecionado(it) }
+            ?.let { viewModel.getSelectedSpell(it) }
     }
 
 

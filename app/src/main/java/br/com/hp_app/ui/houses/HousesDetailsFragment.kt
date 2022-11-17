@@ -8,21 +8,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.hp_app.R
-import br.com.hp_app.databinding.FragmentDetalhesHousesBinding
 import br.com.hp_app.data.model.Houses
+import br.com.hp_app.databinding.FragmentHouseDetailsBinding
 import br.com.hp_app.ui.adapters.RecyclerHeadsAdapter
 import br.com.hp_app.ui.adapters.RecyclerTraitsAdapter
-import br.com.hp_app.ui.viewmodel.DetalhesViewModel
+import br.com.hp_app.ui.viewmodel.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HousesDetalhesFragment : Fragment() {
+class HousesDetailsFragment : Fragment() {
 
-    private val viewModel by viewModel<DetalhesViewModel>()
+    private val viewModel by viewModel<DetailsViewModel>()
     private lateinit var headsAdapter: RecyclerHeadsAdapter
     private lateinit var traitsAdapter: RecyclerTraitsAdapter
 
 
-    private var _binding: FragmentDetalhesHousesBinding? = null
+    private var _binding: FragmentHouseDetailsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,16 +34,16 @@ class HousesDetalhesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentDetalhesHousesBinding.inflate(inflater, container, false)
+        _binding = FragmentHouseDetailsBinding.inflate(inflater, container, false)
 
-        pegaHouseSelecionada()
+        getSelectedHouse()
 
-        populaCampos()
+        populateFields()
 
         return binding.root
     }
 
-    private fun populaCampos() {
+    private fun populateFields() {
         viewModel.selectedHouse.observe(requireActivity()) { house ->
             binding.tvHouseName.text = house.name
             binding.tvAnimal.text = getString(R.string.animal_details).plus(house.animal)
@@ -53,27 +53,35 @@ class HousesDetalhesFragment : Fragment() {
             binding.tvGhostDescription.text = house.ghost
             binding.tvCommonRoomDescription.text = house.commonRoom
 
-            configuraHeadsRecyclerView(house)
+            setupHeadsRecyclerView(house)
 
-            configuraTraitsRecyclerView(house)
+            setupTraitsRecyclerView(house)
         }
     }
 
-    private fun configuraTraitsRecyclerView(house: Houses) {
+    private fun setupTraitsRecyclerView(house: Houses) {
         binding.rvTraits.layoutManager = GridLayoutManager(context, 2)
+        setTraitsAdapter(house)
+    }
+
+    private fun setTraitsAdapter(house: Houses) {
         traitsAdapter = RecyclerTraitsAdapter(house.traits)
         binding.rvTraits.adapter = traitsAdapter
     }
 
-    private fun configuraHeadsRecyclerView(house: Houses) {
+    private fun setupHeadsRecyclerView(house: Houses) {
         binding.rvHeads.layoutManager = GridLayoutManager(context, 2)
+        setHeadsAdapter(house)
+    }
+
+    private fun setHeadsAdapter(house: Houses) {
         headsAdapter = RecyclerHeadsAdapter(house.heads)
         binding.rvHeads.adapter = headsAdapter
     }
 
-    private fun pegaHouseSelecionada() {
+    private fun getSelectedHouse() {
         requireActivity().intent.getStringExtra("houseId")
-            ?.let { viewModel.pegaHouseSelecionada(it) }
+            ?.let { viewModel.getSelectedHouse(it) }
     }
 
 

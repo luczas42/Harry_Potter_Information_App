@@ -5,40 +5,40 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import br.com.hp_app.R
-import br.com.hp_app.databinding.ActivityDetalhesBinding
+import br.com.hp_app.databinding.ActivityDetailsBinding
 
-class DetalhesActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetalhesBinding
+    private lateinit var binding: ActivityDetailsBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityDetalhesBinding.inflate(layoutInflater)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        configuraToolbar()
+        setupToolbar()
 
-        configuraNavegacao()
+        setupNavigation()
 
     }
 
-    private fun configuraNavegacao() {
+    private fun setupNavigation() {
         if (intent.hasExtra("elixirId")) {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_elixirs_details)
-        }else if (intent.hasExtra("housesId")) {
+        } else if (intent.hasExtra("housesId")) {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_houses_details)
-        }else if (intent.hasExtra("spellId")){
+        } else if (intent.hasExtra("spellId")) {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_spells_details)
-        }else if (intent.hasExtra("wizardId")){
+        } else if (intent.hasExtra("wizardId")) {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_wizards_details)
-        }else if (intent.hasExtra("ingredientId")){
+        } else if (intent.hasExtra("ingredientId")) {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_ingredients_details)
         }
     }
 
-    private fun configuraToolbar() {
+    private fun setupToolbar() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = ""
@@ -47,7 +47,7 @@ class DetalhesActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if (item.itemId == android.R.id.home){
+        if (item.itemId == android.R.id.home) {
             finish()
         }
 

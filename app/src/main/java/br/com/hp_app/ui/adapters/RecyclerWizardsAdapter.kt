@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
 import br.com.hp_app.data.model.Wizards
+import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
 class RecyclerWizardsAdapter(private val wizards: List<Wizards>) :
     RecyclerView.Adapter<RecyclerWizardsAdapter.ViewHolder>() {
@@ -13,38 +13,36 @@ class RecyclerWizardsAdapter(private val wizards: List<Wizards>) :
     lateinit var itemClickListener: (String) -> Unit
 
 
-    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    inner class ViewHolder(private val binding: ListsRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun vincula(wizards: Wizards) = with(binding) {
-            checaNomeNulo(wizards)
+        fun bind(wizards: Wizards) = with(binding) {
+            wizardNameNullCheck(wizards)
             tvDescricao.visibility = View.GONE
             viewDivider.visibility = View.INVISIBLE
-            itemView.rootView.setOnClickListener{
+            itemView.rootView.setOnClickListener {
                 itemClickListener.invoke(wizards.id)
             }
         }
 
-        private fun ListasRecyclerviewItemBinding.checaNomeNulo(wizards: Wizards) {
+        private fun wizardNameNullCheck(wizards: Wizards) {
             if (wizards.firstName != null) {
-                tvNome.text = wizards.firstName.plus(" ".plus(wizards.lastName))
+                binding.tvNome.text = wizards.firstName.plus(" ".plus(wizards.lastName))
             } else {
-                tvNome.text = wizards.lastName
+                binding.tvNome.text = wizards.lastName
             }
         }
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ListasRecyclerviewItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
+        val binding = ListsRecyclerviewItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
         )
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.vincula(wizards[position])
+        holder.bind(wizards[position])
     }
 
     override fun getItemCount(): Int {

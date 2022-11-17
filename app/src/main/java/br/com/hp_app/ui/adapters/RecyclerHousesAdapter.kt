@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import br.com.hp_app.databinding.ListasRecyclerviewItemBinding
 import br.com.hp_app.data.model.Houses
+import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
 class RecyclerHousesAdapter(private val houses: List<Houses>) :
     Adapter<RecyclerHousesAdapter.ViewHolder>() {
 
     lateinit var itemClickListener: (String) -> Unit
 
-    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    inner class ViewHolder(private val binding: ListsRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun vincula(houses: Houses) = with(binding) {
+        fun bind(houses: Houses) = with(binding) {
             tvNome.text = houses.name
             tvDescricao.text = houses.animal
             itemView.rootView.setOnClickListener {
@@ -24,7 +24,7 @@ class RecyclerHousesAdapter(private val houses: List<Houses>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ListasRecyclerviewItemBinding.inflate(
+        val binding = ListsRecyclerviewItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -33,7 +33,7 @@ class RecyclerHousesAdapter(private val houses: List<Houses>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.vincula(houses[position])
+        holder.bind(houses[position])
     }
 
     override fun getItemCount(): Int {

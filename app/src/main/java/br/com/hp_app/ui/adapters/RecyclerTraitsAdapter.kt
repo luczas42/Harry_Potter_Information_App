@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import br.com.hp_app.databinding.DetalhesRecyclerviewItemBinding
 import br.com.hp_app.data.model.Traits
+import br.com.hp_app.databinding.DetailsRecyclerviewItemBinding
 
 class RecyclerTraitsAdapter(private val traits: List<Traits>) :
     Adapter<RecyclerTraitsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: DetalhesRecyclerviewItemBinding) :
+    inner class ViewHolder(private val binding: DetailsRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun vincula(traits: Traits) {
+        fun bind(traits: Traits) {
             binding.rvItemName.text = traits.name
         }
 
@@ -20,7 +20,7 @@ class RecyclerTraitsAdapter(private val traits: List<Traits>) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = DetalhesRecyclerviewItemBinding.inflate(
+        val binding = DetailsRecyclerviewItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -29,7 +29,7 @@ class RecyclerTraitsAdapter(private val traits: List<Traits>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.vincula(traits[position])
+        holder.bind(traits[position])
     }
 
     override fun getItemCount(): Int {

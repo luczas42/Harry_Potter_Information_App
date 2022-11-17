@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.hp_app.data.model.Elixirs
-import br.com.hp_app.databinding.FragmentDetalhesElixirsBinding
+import br.com.hp_app.databinding.FragmentElixirDetailsBinding
 import br.com.hp_app.ui.adapters.RecyclerElixirIngredientsAdapter
 import br.com.hp_app.ui.adapters.RecyclerElixirInventorsAdapter
-import br.com.hp_app.ui.viewmodel.DetalhesViewModel
+import br.com.hp_app.ui.viewmodel.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ElixirsDetalhesFragment : Fragment() {
+class ElixirsDetailsFragment : Fragment() {
 
-    private val viewModel by viewModel<DetalhesViewModel>()
+    private val viewModel by viewModel<DetailsViewModel>()
     private lateinit var inventorsAdapter: RecyclerElixirInventorsAdapter
     private lateinit var ingredientsAdapter: RecyclerElixirIngredientsAdapter
 
-    private var _binding: FragmentDetalhesElixirsBinding? = null
+    private var _binding: FragmentElixirDetailsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -30,17 +30,17 @@ class ElixirsDetalhesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentDetalhesElixirsBinding.inflate(inflater, container, false)
+        _binding = FragmentElixirDetailsBinding.inflate(inflater, container, false)
 
-        pegaElixirSelecionado()
+        getSelectedElixir()
 
-        populaCampos()
+        populateFields()
 
         return binding.root
 
     }
 
-    private fun populaCampos() {
+    private fun populateFields() {
         viewModel.selectedElixir.observe(requireActivity()) { elixir ->
             binding.tvName.text = elixir.name
             binding.tvEffectsDescription.text = elixir.effect
@@ -50,26 +50,34 @@ class ElixirsDetalhesFragment : Fragment() {
             binding.tvDifficultyDescription.text = elixir.difficulty
             binding.tvManufacturerDescription.text = elixir.manufacturer
 
-            configuraIngredientsRecyclerView(elixir)
-            configuraaInventorsRecyclerView(elixir)
+            setupIngredientsRecyclerView(elixir)
+            setupInventorsRecyclerView(elixir)
         }
     }
 
-    private fun configuraIngredientsRecyclerView(elixirs: Elixirs) {
+    private fun setupIngredientsRecyclerView(elixirs: Elixirs) {
         binding.rvIngredients.layoutManager = GridLayoutManager(context, 2)
+        setIngredientsAdapter(elixirs)
+    }
+
+    private fun setIngredientsAdapter(elixirs: Elixirs) {
         ingredientsAdapter = RecyclerElixirIngredientsAdapter(elixirs.ingredients)
         binding.rvIngredients.adapter = ingredientsAdapter
     }
 
-    private fun configuraaInventorsRecyclerView(elixirs: Elixirs) {
+    private fun setupInventorsRecyclerView(elixirs: Elixirs) {
         binding.rvInventors.layoutManager = GridLayoutManager(context, 2)
+        setInventorsAdapter(elixirs)
+    }
+
+    private fun setInventorsAdapter(elixirs: Elixirs) {
         inventorsAdapter = RecyclerElixirInventorsAdapter(elixirs.inventors)
         binding.rvInventors.adapter = inventorsAdapter
     }
 
-    private fun pegaElixirSelecionado() {
+    private fun getSelectedElixir() {
         requireActivity().intent.getStringExtra("elixirId")
-            ?.let { viewModel.pegaElixirSelecionado(it) }
+            ?.let { viewModel.getSelectedElixir(it) }
     }
 
     override fun onDestroyView() {

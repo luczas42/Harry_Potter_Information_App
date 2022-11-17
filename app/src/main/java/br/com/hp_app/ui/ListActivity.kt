@@ -7,17 +7,17 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.hp_app.R
-import br.com.hp_app.databinding.ActivityListaBinding
+import br.com.hp_app.databinding.ActivityListBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ListaActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityListaBinding
+    private lateinit var binding: ActivityListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityListaBinding.inflate(layoutInflater)
+        binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navView: BottomNavigationView = binding.navView
 
@@ -26,7 +26,11 @@ class ListaActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_houses, R.id.navigation_elixirs, R.id.navigation_spells, R.id.navigation_ingredients, R.id.navigation_wizards
+                R.id.navigation_houses,
+                R.id.navigation_elixirs,
+                R.id.navigation_spells,
+                R.id.navigation_ingredients,
+                R.id.navigation_wizards
             )
         )
 
