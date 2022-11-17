@@ -26,6 +26,11 @@ interface ApiService {
     @GET("/Ingredients")
     suspend fun pegaIngredients(): List<Ingredients>
 
+    @GET("/Ingredients/{id}")
+    suspend fun getIngredientById(
+        @Path("id") ingredientId: String
+    ): Ingredients
+
     @GET("/Wizards")
     suspend fun pegaWizards(): List<Wizards>
 
@@ -41,7 +46,6 @@ interface ApiService {
     suspend fun pegaSpellsPorId(
         @Path("id") idSpell: String
     ): Spells
-
 
 
 }

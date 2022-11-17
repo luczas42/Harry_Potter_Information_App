@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import br.com.hp_app.data.model.Elixirs
 import br.com.hp_app.data.model.Wizards
 import br.com.hp_app.databinding.FragmentWizardDetailsBinding
-import br.com.hp_app.ui.adapters.RecyclerElixirIngredientsAdapter
 import br.com.hp_app.ui.adapters.RecyclerWizardElixirsAdapter
 import br.com.hp_app.ui.viewmodel.DetalhesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,7 +31,7 @@ class WizardDetailsFragment : Fragment() {
 
         _binding = FragmentWizardDetailsBinding.inflate(inflater, container, false)
 
-        pegaSpellSelecionada()
+        getSelectedSpell()
 
         populaCampos()
 
@@ -47,16 +45,16 @@ class WizardDetailsFragment : Fragment() {
             } else {
                 binding.tvName.text = wizard.lastName
             }
-            configuraElixirsRecyclerView(wizard)
+            configureElixirsRecyclerView(wizard)
         }
     }
 
-    private fun pegaSpellSelecionada() {
+    private fun getSelectedSpell() {
         requireActivity().intent.getStringExtra("wizardId")
             ?.let { viewModel.getSelectedWizard(it) }
     }
 
-    private fun configuraElixirsRecyclerView(wizards: Wizards) {
+    private fun configureElixirsRecyclerView(wizards: Wizards) {
         binding.rvElixirs.layoutManager = GridLayoutManager(context, 2)
         elixirsAdapter = RecyclerWizardElixirsAdapter(wizards.elixirs)
         binding.rvElixirs.adapter = elixirsAdapter

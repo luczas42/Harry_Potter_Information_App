@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.hp_app.data.api.Repository
-import br.com.hp_app.data.model.Elixirs
-import br.com.hp_app.data.model.Houses
-import br.com.hp_app.data.model.Spells
-import br.com.hp_app.data.model.Wizards
+import br.com.hp_app.data.model.*
 import kotlinx.coroutines.launch
 
 class DetalhesViewModel(private val repo: Repository) : ViewModel() {
@@ -39,7 +36,7 @@ class DetalhesViewModel(private val repo: Repository) : ViewModel() {
     private val _selectedSpell = MutableLiveData<Spells>()
     val selectedSpell: LiveData<Spells> = _selectedSpell
 
-    fun pegaSpellSepecionado(idSpell: String){
+    fun pegaSpellSepecionado(idSpell: String) {
         viewModelScope.launch {
             val spell: Spells = repo.pegaSpellPorId(idSpell)
             _selectedSpell.value = spell
@@ -51,10 +48,21 @@ class DetalhesViewModel(private val repo: Repository) : ViewModel() {
     private val _selectedWizard = MutableLiveData<Wizards>()
     val selectedWizard: LiveData<Wizards> = _selectedWizard
 
-    fun getSelectedWizard(wizardId: String){
+    fun getSelectedWizard(wizardId: String) {
         viewModelScope.launch {
-            val wizard : Wizards = repo.getWizardById(wizardId)
+            val wizard: Wizards = repo.getWizardById(wizardId)
             _selectedWizard.value = wizard
+        }
+    }
+
+    //Ingredients
+    private val _selectedIngredient = MutableLiveData<Ingredients>()
+    val selectedIngredient: LiveData<Ingredients> = _selectedIngredient
+
+    fun getSelectedIngredient(ingredientId: String) {
+        viewModelScope.launch {
+            val ingredient: Ingredients = repo.getIngredientById(ingredientId)
+            _selectedIngredient.value = ingredient
         }
     }
 }

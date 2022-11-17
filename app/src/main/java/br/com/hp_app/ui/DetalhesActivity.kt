@@ -33,6 +33,8 @@ class DetalhesActivity : AppCompatActivity() {
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_spells_details)
         }else if (intent.hasExtra("wizardId")){
             findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_wizards_details)
+        }else if (intent.hasExtra("ingredientId")){
+            findNavController(R.id.nav_host_fragment_content_detalhes).navigate(R.id.navigation_ingredients_details)
         }
     }
 

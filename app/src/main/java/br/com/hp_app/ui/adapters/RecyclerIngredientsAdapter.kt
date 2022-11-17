@@ -10,12 +10,18 @@ import br.com.hp_app.data.model.Ingredients
 class RecyclerIngredientsAdapter(private val ingredients: List<Ingredients>) :
     RecyclerView.Adapter<RecyclerIngredientsAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    lateinit var itemClickListener: (String) -> Unit
+
+    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun vincula(ingredients: Ingredients) = with(binding) {
             tvNome.text = ingredients.name
             tvDescricao.visibility = View.GONE
             viewDivider.visibility = View.INVISIBLE
+
+            itemView.rootView.setOnClickListener {
+                itemClickListener.invoke(ingredients.id)
+            }
         }
     }
 

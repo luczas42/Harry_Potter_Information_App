@@ -1,5 +1,6 @@
 package br.com.hp_app.data.api
 
+import br.com.hp_app.data.model.Ingredients
 import br.com.hp_app.data.model.Spells
 import br.com.hp_app.data.model.Wizards
 
@@ -31,5 +32,8 @@ class Repository(private val retrofitCon: RetrofitInicializador) {
 
     suspend fun getWizardById(wizardId: String): Wizards =
         retrofitCon.apiService.getWizardById(wizardId)
+
+    suspend fun getIngredientById(ingredientId: String): Ingredients =
+        retrofitCon.apiService.getIngredientById(ingredientId)
 
 }

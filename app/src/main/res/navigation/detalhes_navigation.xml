@@ -25,5 +25,10 @@
         android:name="br.com.hp_app.ui.wizards.WizardDetailsFragment"
         android:label="WizardDetailsFragment"
         tools:layout="@layout/fragment_wizard_details"/>
+    <fragment
+        android:id="@+id/navigation_ingredients_details"
+        android:name="br.com.hp_app.ui.spells.IngredientDetailsFragment"
+        android:label="IngredientDetailsFragment"
+        tools:layout="@layout/fragment_ingredient_details"/>
 
 </navigation>
