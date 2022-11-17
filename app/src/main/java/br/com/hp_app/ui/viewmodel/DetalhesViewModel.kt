@@ -8,6 +8,7 @@ import br.com.hp_app.data.api.Repository
 import br.com.hp_app.data.model.Elixirs
 import br.com.hp_app.data.model.Houses
 import br.com.hp_app.data.model.Spells
+import br.com.hp_app.data.model.Wizards
 import kotlinx.coroutines.launch
 
 class DetalhesViewModel(private val repo: Repository) : ViewModel() {
@@ -42,6 +43,18 @@ class DetalhesViewModel(private val repo: Repository) : ViewModel() {
         viewModelScope.launch {
             val spell: Spells = repo.pegaSpellPorId(idSpell)
             _selectedSpell.value = spell
+        }
+    }
+
+    //Wizards
+
+    private val _selectedWizard = MutableLiveData<Wizards>()
+    val selectedWizard: LiveData<Wizards> = _selectedWizard
+
+    fun getSelectedWizard(wizardId: String){
+        viewModelScope.launch {
+            val wizard : Wizards = repo.getWizardById(wizardId)
+            _selectedWizard.value = wizard
         }
     }
 }

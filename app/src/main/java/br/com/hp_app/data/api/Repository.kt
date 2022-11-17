@@ -1,6 +1,7 @@
 package br.com.hp_app.data.api
 
 import br.com.hp_app.data.model.Spells
+import br.com.hp_app.data.model.Wizards
 
 class Repository(private val retrofitCon: RetrofitInicializador) {
 
@@ -27,5 +28,8 @@ class Repository(private val retrofitCon: RetrofitInicializador) {
 
     suspend fun pegaSpellPorId(idSpell: String): Spells =
         retrofitCon.apiService.pegaSpellsPorId(idSpell)
+
+    suspend fun getWizardById(wizardId: String): Wizards =
+        retrofitCon.apiService.getWizardById(wizardId)
 
 }

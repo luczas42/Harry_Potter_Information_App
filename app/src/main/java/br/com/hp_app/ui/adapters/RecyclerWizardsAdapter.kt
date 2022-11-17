@@ -10,12 +10,18 @@ import br.com.hp_app.data.model.Wizards
 class RecyclerWizardsAdapter(private val wizards: List<Wizards>) :
     RecyclerView.Adapter<RecyclerWizardsAdapter.ViewHolder>() {
 
-    class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
+    lateinit var itemClickListener: (String) -> Unit
+
+
+    inner class ViewHolder(private val binding: ListasRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun vincula(wizards: Wizards) = with(binding) {
             checaNomeNulo(wizards)
             tvDescricao.visibility = View.GONE
             viewDivider.visibility = View.INVISIBLE
+            itemView.rootView.setOnClickListener{
+                itemClickListener.invoke(wizards.id)
+            }
         }
 
         private fun ListasRecyclerviewItemBinding.checaNomeNulo(wizards: Wizards) {

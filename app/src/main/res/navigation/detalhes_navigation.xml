@@ -20,4 +20,10 @@
         android:name="br.com.hp_app.ui.spells.SpellsDetalhesFragment"
         android:label="Spells"
         tools:layout="@layout/fragment_detalhes_spells"/>
+    <fragment
+        android:id="@+id/navigation_wizards_details"
+        android:name="br.com.hp_app.ui.wizards.WizardDetailsFragment"
+        android:label="WizardDetailsFragment"
+        tools:layout="@layout/fragment_wizard_details"/>
+
 </navigation>

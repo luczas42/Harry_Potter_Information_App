@@ -40,11 +40,6 @@ class ElixirsDetalhesFragment : Fragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
     private fun populaCampos() {
         viewModel.selectedElixir.observe(requireActivity()) { elixir ->
             binding.tvName.text = elixir.name

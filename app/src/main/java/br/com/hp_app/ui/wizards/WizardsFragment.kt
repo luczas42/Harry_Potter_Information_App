@@ -1,5 +1,6 @@
 package br.com.hp_app.ui.wizards
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.databinding.FragmentWizardsBinding
+import br.com.hp_app.ui.DetalhesActivity
 import br.com.hp_app.ui.adapters.RecyclerWizardsAdapter
 import br.com.hp_app.ui.viewmodel.ListasViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -15,6 +17,8 @@ class WizardsFragment : Fragment() {
 
     private var _binding: FragmentWizardsBinding? = null
     private val viewModel by viewModel<ListasViewModel>()
+    private lateinit var adapter: RecyclerWizardsAdapter
+
 
     private val binding get() = _binding!!
 
@@ -24,15 +28,11 @@ class WizardsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentWizardsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        if (activity != null && isAdded) {
+        configuraRecyclerView()
 
-            configuraRecyclerView()
-
-        }
         return root
     }
 
@@ -40,7 +40,13 @@ class WizardsFragment : Fragment() {
         viewModel.pegaListaWizards()
         viewModel.listaWizards.observe(requireActivity()) { wizards ->
             binding.recyclerViewWizards.layoutManager = LinearLayoutManager(context)
-            binding.recyclerViewWizards.adapter = RecyclerWizardsAdapter(wizards)
+            adapter = RecyclerWizardsAdapter(wizards)
+            binding.recyclerViewWizards.adapter = adapter
+            adapter.itemClickListener = { wizardId ->
+                val intent = Intent(activity, DetalhesActivity::class.java)
+                intent.putExtra("wizardId", wizardId)
+                startActivity(intent)
+            }
         }
     }
 
