@@ -44,6 +44,14 @@ class HousesFragment : Fragment() {
             binding.recyclerViewHouses.layoutManager = LinearLayoutManager(context)
             setAdapter(houses)
             setItemClickListener()
+            onAdapterSuccess()
+        }
+    }
+
+    private fun onAdapterSuccess() {
+        if (adapter.itemCount > 0) {
+            binding.recyclerViewHouses.visibility = View.VISIBLE
+            binding.loading.visibility = View.GONE
         }
     }
 

@@ -44,6 +44,14 @@ class ElixirsFragment : Fragment() {
             binding.recyclerViewElixirs.layoutManager = LinearLayoutManager(context)
             setAdapter(elixirs)
             setItemClickListener()
+            onAdapterSuccess()
+        }
+    }
+
+    private fun onAdapterSuccess() {
+        if (adapter.itemCount > 0) {
+            binding.recyclerViewElixirs.visibility = View.VISIBLE
+            binding.loading.visibility = View.GONE
         }
     }
 

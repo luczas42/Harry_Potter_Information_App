@@ -43,6 +43,14 @@ class WizardsFragment : Fragment() {
             binding.recyclerViewWizards.layoutManager = LinearLayoutManager(context)
             setAdapter(wizards)
             setItemClickListener()
+            onAdapterSuccess()
+        }
+    }
+
+    private fun onAdapterSuccess() {
+        if (adapter.itemCount > 0) {
+            binding.recyclerViewWizards.visibility = View.VISIBLE
+            binding.loading.visibility = View.GONE
         }
     }
 

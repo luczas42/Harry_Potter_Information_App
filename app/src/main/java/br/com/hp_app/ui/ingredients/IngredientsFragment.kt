@@ -45,12 +45,20 @@ class IngredientsFragment : Fragment() {
             binding.recyclerViewIngredients.layoutManager = LinearLayoutManager(context)
             setAdapter(ingredients)
             setItemClickListener()
+            onAdapterSuccess()
         }
     }
 
     private fun setAdapter(ingredients: List<Ingredients>) {
         adapter = RecyclerIngredientsAdapter(ingredients)
         binding.recyclerViewIngredients.adapter = adapter
+    }
+
+    private fun onAdapterSuccess() {
+        if (adapter.itemCount > 0) {
+            binding.recyclerViewIngredients.visibility = View.VISIBLE
+            binding.loading.visibility = View.GONE
+        }
     }
 
     private fun setItemClickListener() {
