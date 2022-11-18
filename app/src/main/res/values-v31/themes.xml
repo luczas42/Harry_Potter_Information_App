@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
+
     <style name="Theme.Hp_app" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
@@ -12,14 +13,7 @@
         <item name="colorOnSecondary">@color/textOnS</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:splashScreenTheme">@color/secondary</item>
+        <!-- Customize your theme here. -->
     </style>
-
-    <style name="Theme.Hp_app.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.Hp_app.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.Hp_app.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
