@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.hp_app.data.model.Houses
 import br.com.hp_app.databinding.FragmentHousesBinding
@@ -34,7 +36,9 @@ class HousesFragment : Fragment() {
         val root: View = binding.root
 
         setupRecyclerView()
-
+        viewModel.searchQuery.observe(requireActivity()) { query ->
+            Toast.makeText(requireActivity(), query, Toast.LENGTH_SHORT).show()
+        }
         return root
     }
 

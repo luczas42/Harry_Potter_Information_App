@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import br.com.hp_app.data.model.Houses
 import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
+
 class RecyclerHousesAdapter(private val houses: List<Houses>) :
     Adapter<RecyclerHousesAdapter.ViewHolder>() {
 
@@ -39,4 +40,14 @@ class RecyclerHousesAdapter(private val houses: List<Houses>) :
     override fun getItemCount(): Int {
         return houses.size
     }
+
+    fun filterItems(query: String){
+        val filteredList = ArrayList<Houses>()
+        houses.forEach { house ->
+            if (house.name.lowercase().trim().contains(query)) {
+                filteredList.add(house)
+            }
+        }
+    }
+
 }

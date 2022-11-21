@@ -10,13 +10,21 @@ import kotlinx.coroutines.launch
 
 class ListsViewModel(private val repo: Repository) : ViewModel() {
 
+    //SearchQuery
+    private val _searchQuery = MutableLiveData<String>()
+    val searchQuery: LiveData<String> = _searchQuery
+
+    fun getSearchQuery(query: String){
+        _searchQuery.value = query
+    }
+
     //Houses
     private val _houseList = MutableLiveData<List<Houses>>()
     val houseList: LiveData<List<Houses>> = _houseList
 
-    fun getHouseList(){
+    fun getHouseList() {
         viewModelScope.launch {
-            _houseList.value=repo.getHouses()
+            _houseList.value = repo.getHouses()
         }
     }
 
@@ -24,7 +32,7 @@ class ListsViewModel(private val repo: Repository) : ViewModel() {
     private val _elixirList = MutableLiveData<List<Elixirs>>()
     val elixirList: LiveData<List<Elixirs>> = _elixirList
 
-    fun getElixirList(){
+    fun getElixirList() {
         viewModelScope.launch {
             _elixirList.value = repo.getElixirs()
         }
@@ -34,7 +42,7 @@ class ListsViewModel(private val repo: Repository) : ViewModel() {
     private val _spellList = MutableLiveData<List<Spells>>()
     val spellList: LiveData<List<Spells>> = _spellList
 
-    fun getSpellList(){
+    fun getSpellList() {
         viewModelScope.launch {
             _spellList.value = repo.getSpells()
         }
@@ -44,7 +52,7 @@ class ListsViewModel(private val repo: Repository) : ViewModel() {
     private val _ingredientList = MutableLiveData<List<Ingredients>>()
     val ingredientList: LiveData<List<Ingredients>> = _ingredientList
 
-    fun getIngredientList(){
+    fun getIngredientList() {
         viewModelScope.launch {
             _ingredientList.value = repo.getIngredients()
         }
@@ -54,7 +62,7 @@ class ListsViewModel(private val repo: Repository) : ViewModel() {
     private val _wizardList = MutableLiveData<List<Wizards>>()
     val wizardList: LiveData<List<Wizards>> = _wizardList
 
-    fun getWizardList(){
+    fun getWizardList() {
         viewModelScope.launch {
             _wizardList.value = repo.getWizards()
         }
