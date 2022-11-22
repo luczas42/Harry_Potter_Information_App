@@ -55,13 +55,16 @@ class ListActivity : AppCompatActivity() {
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
-                    viewModel.getSearchQuery(query)
-                }
+
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    viewModel.getSearchQuery(newText)
+                }else{
+                    viewModel.getSearchQuery("")
+                }
                 return false
             }
 

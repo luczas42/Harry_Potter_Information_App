@@ -36,10 +36,20 @@ class HousesFragment : Fragment() {
         val root: View = binding.root
 
         setupRecyclerView()
-        viewModel.searchQuery.observe(requireActivity()) { query ->
-            Toast.makeText(requireActivity(), query, Toast.LENGTH_SHORT).show()
-        }
+        onSearch()
+
         return root
+    }
+
+    private fun onSearch() {
+        viewModel.searchQuery.observe(requireActivity()) { query ->
+
+            if (query != "") {
+                adapter.filterItems(query)
+            } else {
+                adapter.onFilterCleared(viewModel.houseList.value)
+            }
+        }
     }
 
     private fun setupRecyclerView() {

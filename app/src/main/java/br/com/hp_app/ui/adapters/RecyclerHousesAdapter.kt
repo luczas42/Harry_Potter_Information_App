@@ -8,7 +8,7 @@ import br.com.hp_app.data.model.Houses
 import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
 
-class RecyclerHousesAdapter(private val houses: List<Houses>) :
+class RecyclerHousesAdapter(private var houses: List<Houses>) :
     Adapter<RecyclerHousesAdapter.ViewHolder>() {
 
     lateinit var itemClickListener: (String) -> Unit
@@ -47,6 +47,15 @@ class RecyclerHousesAdapter(private val houses: List<Houses>) :
             if (house.name.lowercase().trim().contains(query)) {
                 filteredList.add(house)
             }
+        }
+        houses = filteredList
+        notifyDataSetChanged()
+    }
+
+    fun onFilterCleared(allHouses: List<Houses>?){
+        if (allHouses != null) {
+            houses = allHouses
+            notifyDataSetChanged()
         }
     }
 
