@@ -34,16 +34,14 @@ class HousesFragment : Fragment() {
     ): View {
         _binding = FragmentHousesBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        requireActivity().invalidateOptionsMenu()
         setupRecyclerView()
-        onSearch()
 
         return root
     }
 
     private fun onSearch() {
         viewModel.searchQuery.observe(requireActivity()) { query ->
-
             if (query != "") {
                 adapter.filterItems(query)
             } else {
@@ -59,6 +57,8 @@ class HousesFragment : Fragment() {
             setAdapter(houses)
             setItemClickListener()
             onAdapterSuccess()
+            onSearch()
+
         }
     }
 

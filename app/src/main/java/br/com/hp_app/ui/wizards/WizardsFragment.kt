@@ -31,8 +31,9 @@ class WizardsFragment : Fragment() {
 
         _binding = FragmentWizardsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        requireActivity().invalidateOptionsMenu()
         setupRecyclerView()
+
 
         return root
     }
@@ -44,6 +45,7 @@ class WizardsFragment : Fragment() {
             setAdapter(wizards)
             setItemClickListener()
             onAdapterSuccess()
+            onSearch()
         }
     }
 
@@ -51,6 +53,16 @@ class WizardsFragment : Fragment() {
         if (adapter.itemCount > 0) {
             binding.recyclerViewWizards.visibility = View.VISIBLE
             binding.loading.visibility = View.GONE
+        }
+    }
+
+    private fun onSearch() {
+        viewModel.searchQuery.observe(requireActivity()) { query ->
+            if (query != null && query != "") {
+                adapter.filterItems(query)
+            } else {
+                adapter.onFilterCleared(viewModel.wizardList.value)
+            }
         }
     }
 

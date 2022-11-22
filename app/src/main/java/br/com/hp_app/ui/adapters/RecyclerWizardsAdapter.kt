@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.hp_app.data.model.Wizards
 import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
-class RecyclerWizardsAdapter(private val wizards: List<Wizards>) :
+class RecyclerWizardsAdapter(private var wizards: List<Wizards>) :
     RecyclerView.Adapter<RecyclerWizardsAdapter.ViewHolder>() {
 
     lateinit var itemClickListener: (String) -> Unit
@@ -47,5 +47,32 @@ class RecyclerWizardsAdapter(private val wizards: List<Wizards>) :
 
     override fun getItemCount(): Int {
         return wizards.size
+    }
+
+
+    fun filterItems(query: String) {
+        val filteredList = ArrayList<Wizards>()
+        wizards.forEach { wizard ->
+            if (wizard.firstName != null) {
+                if (wizard.firstName.plus(wizard.lastName).lowercase().trim()
+                        .contains(query, true)
+                ) {
+                    filteredList.add(wizard)
+                }
+            } else {
+                if (wizard.lastName.lowercase().trim().contains(query, true)) {
+                    filteredList.add(wizard)
+                }
+            }
+        }
+        wizards = filteredList
+        notifyDataSetChanged()
+    }
+
+    fun onFilterCleared(allWizards: List<Wizards>?) {
+        if (allWizards != null) {
+            wizards = allWizards
+            notifyDataSetChanged()
+        }
     }
 }

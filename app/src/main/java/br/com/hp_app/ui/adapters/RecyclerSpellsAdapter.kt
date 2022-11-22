@@ -3,10 +3,11 @@ package br.com.hp_app.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.hp_app.data.model.Houses
 import br.com.hp_app.data.model.Spells
 import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
-class RecyclerSpellsAdapter(private val spells: List<Spells>) :
+class RecyclerSpellsAdapter(private var spells: List<Spells>) :
     RecyclerView.Adapter<RecyclerSpellsAdapter.ViewHolder>() {
 
     lateinit var itemClickListener: (String) -> Unit
@@ -38,5 +39,23 @@ class RecyclerSpellsAdapter(private val spells: List<Spells>) :
 
     override fun getItemCount(): Int {
         return spells.size
+    }
+
+    fun filterItems(query: String){
+        val filteredList = ArrayList<Spells>()
+        spells.forEach { spell ->
+            if (spell.name.lowercase().trim().contains(query)) {
+                filteredList.add(spell)
+            }
+        }
+        spells = filteredList
+        notifyDataSetChanged()
+    }
+
+    fun onFilterCleared(allSpells: List<Spells>?){
+        if (allSpells != null) {
+            spells = allSpells
+            notifyDataSetChanged()
+        }
     }
 }

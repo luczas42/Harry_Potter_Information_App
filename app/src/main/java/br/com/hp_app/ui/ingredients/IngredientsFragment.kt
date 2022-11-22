@@ -32,12 +32,21 @@ class IngredientsFragment : Fragment() {
 
         _binding = FragmentIngredientsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        requireActivity().invalidateOptionsMenu()
         setupRecyclerView()
 
         return root
     }
 
+    private fun onSearch() {
+        viewModel.searchQuery.observe(requireActivity()) { query ->
+            if (query != "") {
+                adapter.filterItems(query)
+            } else {
+                adapter.onFilterCleared(viewModel.ingredientList.value)
+            }
+        }
+    }
 
     private fun setupRecyclerView() {
         viewModel.getIngredientList()
@@ -46,6 +55,7 @@ class IngredientsFragment : Fragment() {
             setAdapter(ingredients)
             setItemClickListener()
             onAdapterSuccess()
+            onSearch()
         }
     }
 

@@ -32,9 +32,8 @@ class ElixirsFragment : Fragment() {
     ): View {
         _binding = FragmentElixirsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        requireActivity().invalidateOptionsMenu()
         setupRecyclerView()
-
         return root
     }
 
@@ -45,6 +44,17 @@ class ElixirsFragment : Fragment() {
             setAdapter(elixirs)
             setItemClickListener()
             onAdapterSuccess()
+            onSearch()
+        }
+    }
+
+    private fun onSearch() {
+        viewModel.searchQuery.observe(requireActivity()) { query ->
+            if (query != "") {
+                adapter.filterItems(query)
+            } else {
+                adapter.onFilterCleared(viewModel.elixirList.value)
+            }
         }
     }
 

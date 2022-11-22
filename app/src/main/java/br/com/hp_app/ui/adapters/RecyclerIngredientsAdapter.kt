@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hp_app.data.model.Ingredients
+import br.com.hp_app.data.model.Spells
 import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
-class RecyclerIngredientsAdapter(private val ingredients: List<Ingredients>) :
+class RecyclerIngredientsAdapter(private var ingredients: List<Ingredients>) :
     RecyclerView.Adapter<RecyclerIngredientsAdapter.ViewHolder>() {
 
     lateinit var itemClickListener: (String) -> Unit
@@ -41,5 +42,23 @@ class RecyclerIngredientsAdapter(private val ingredients: List<Ingredients>) :
 
     override fun getItemCount(): Int {
         return ingredients.size
+    }
+
+    fun filterItems(query: String){
+        val filteredList = ArrayList<Ingredients>()
+        ingredients.forEach { ingredient ->
+            if (ingredient.name.lowercase().trim().contains(query)) {
+                filteredList.add(ingredient)
+            }
+        }
+        ingredients = filteredList
+        notifyDataSetChanged()
+    }
+
+    fun onFilterCleared(allIngredients: List<Ingredients>?){
+        if (allIngredients != null) {
+            ingredients = allIngredients
+            notifyDataSetChanged()
+        }
     }
 }

@@ -35,10 +35,20 @@ class SpellsFragment : Fragment() {
 
         _binding = FragmentSpellsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        requireActivity().invalidateOptionsMenu()
         configuraRecyclerView()
 
         return root
+    }
+
+    private fun onSearch() {
+        viewModel.searchQuery.observe(requireActivity()) { query ->
+            if (query != "") {
+                adapter.filterItems(query)
+            } else {
+                adapter.onFilterCleared(viewModel.spellList.value)
+            }
+        }
     }
 
     private fun onAdapterSuccess() {
@@ -55,6 +65,7 @@ class SpellsFragment : Fragment() {
             setAdapter(spells)
             setItemClickListener()
             onAdapterSuccess()
+            onSearch()
         }
     }
 

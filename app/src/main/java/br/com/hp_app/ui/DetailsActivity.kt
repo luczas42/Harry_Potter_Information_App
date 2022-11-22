@@ -17,7 +17,6 @@ class DetailsActivity : AppCompatActivity() {
 
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupToolbar()
 
         setupNavigation()

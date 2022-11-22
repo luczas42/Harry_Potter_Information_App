@@ -52,6 +52,8 @@ class ListActivity : AppCompatActivity() {
         val search = menu?.findItem(R.id.search)
         val searchView: SearchView = search?.actionView as SearchView
         searchView.queryHint = "Type here..."
+        viewModel.getSearchQuery("")
+        searchView.clearFocus()
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -68,7 +70,9 @@ class ListActivity : AppCompatActivity() {
                 return false
             }
 
+
         })
+
         return super.onCreateOptionsMenu(menu)
     }
 }
