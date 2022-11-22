@@ -45,6 +45,16 @@ class HousesDetailsFragment : Fragment() {
 
     private fun populateFields() {
         viewModel.selectedHouse.observe(requireActivity()) { house ->
+            if (house.name == "Gryffindor") {
+                binding.selectedHouseImage.setImageResource(R.drawable.gryffindor_image)
+            } else if (house.name == "Ravenclaw") {
+                binding.selectedHouseImage.setImageResource(R.drawable.ravenclaw_image)
+            } else if (house.name == "Hufflepuff") {
+                binding.selectedHouseImage.setImageResource(R.drawable.hufflepuff_image)
+            } else {
+                binding.selectedHouseImage.setImageResource(R.drawable.slytherin_image)
+            }
+
             binding.tvHouseName.text = house.name
             binding.tvAnimal.text = getString(R.string.animal_details).plus(house.animal)
             binding.tvFounderDescription.text = house.founder
