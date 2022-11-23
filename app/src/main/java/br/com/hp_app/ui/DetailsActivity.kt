@@ -1,5 +1,7 @@
 package br.com.hp_app.ui
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +44,7 @@ class DetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = ""
         supportActionBar?.elevation = 0f
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#641e1e")))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

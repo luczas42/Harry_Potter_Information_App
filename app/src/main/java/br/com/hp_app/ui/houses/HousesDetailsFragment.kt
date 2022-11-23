@@ -49,6 +49,7 @@ class HousesDetailsFragment : Fragment() {
                 binding.selectedHouseImage.setImageResource(R.drawable.gryffindor_image)
             } else if (house.name == "Ravenclaw") {
                 binding.selectedHouseImage.setImageResource(R.drawable.ravenclaw_image)
+
             } else if (house.name == "Hufflepuff") {
                 binding.selectedHouseImage.setImageResource(R.drawable.hufflepuff_image)
             } else {
