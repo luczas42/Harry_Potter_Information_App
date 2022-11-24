@@ -19,8 +19,7 @@ class SpellDetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         _binding = FragmentSpellDetailsBinding.inflate(inflater, container, false)
@@ -36,7 +35,8 @@ class SpellDetailsFragment : Fragment() {
         viewModel.selectedSpell.observe(requireActivity()) { spell ->
             binding.tvName.text = spell.name
             binding.tvLightDescription.text = spell.light
-            binding.tvCanBeVerbalDescription.text = spell.canBeVerbal.toString()
+            binding.tvCanBeVerbalDescription.text =
+                spell.canBeVerbal.toString().replaceFirstChar { char -> char.uppercase() }
             binding.tvIncantationescription.text = spell.incantation
             binding.tvEffectsDescription.text = spell.effect
             binding.tvTypeDescription.text = spell.type
@@ -45,8 +45,7 @@ class SpellDetailsFragment : Fragment() {
     }
 
     private fun pegaSpellSelecionada() {
-        requireActivity().intent.getStringExtra("spellId")
-            ?.let { viewModel.getSelectedSpell(it) }
+        requireActivity().intent.getStringExtra("spellId")?.let { viewModel.getSelectedSpell(it) }
     }
 
 

@@ -13,7 +13,15 @@ class RecyclerElixirIngredientsAdapter(private val ingredients: List<Ingredients
     inner class ViewHolder(private val binding: DetailsRecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(ingredients: Ingredients) {
-            binding.rvItemName.text = ingredients.name
+            with(binding) {
+                rvItemName.text = ingredients.name
+            }
+        }
+
+        fun bind() {
+            with(binding) {
+                "Unknown".also { rvItemName.text = it }
+            }
         }
     }
 
@@ -28,11 +36,19 @@ class RecyclerElixirIngredientsAdapter(private val ingredients: List<Ingredients
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(ingredients[position])
+        if (ingredients.isEmpty()) {
+            holder.bind()
+        } else {
+            holder.bind(ingredients[position])
+        }
     }
 
     override fun getItemCount(): Int {
-        return ingredients.size
+        return if (ingredients.isEmpty()) {
+            1
+        } else {
+            ingredients.size
+        }
     }
 
 }

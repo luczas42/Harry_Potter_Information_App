@@ -3,8 +3,6 @@ package br.com.hp_app.ui
 import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
-import android.widget.Toast
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,11 +23,9 @@ class ListActivity : AppCompatActivity() {
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navView: BottomNavigationView = binding.navView
-        val toolbar: androidx.appcompat.widget.Toolbar = binding.listToolbar
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_houses,
@@ -55,7 +51,7 @@ class ListActivity : AppCompatActivity() {
         viewModel.getSearchQuery("")
         searchView.clearFocus()
 
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
                 return false
@@ -64,12 +60,11 @@ class ListActivity : AppCompatActivity() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
                     viewModel.getSearchQuery(newText)
-                }else{
+                } else {
                     viewModel.getSearchQuery("")
                 }
                 return false
             }
-
 
         })
 

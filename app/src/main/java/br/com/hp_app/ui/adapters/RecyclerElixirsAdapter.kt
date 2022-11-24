@@ -1,10 +1,10 @@
 package br.com.hp_app.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.hp_app.data.model.Elixirs
-import br.com.hp_app.data.model.Houses
 import br.com.hp_app.databinding.ListsRecyclerviewItemBinding
 
 class RecyclerElixirsAdapter(private var elixirs: List<Elixirs>) :
@@ -41,7 +41,8 @@ class RecyclerElixirsAdapter(private var elixirs: List<Elixirs>) :
     }
 
 
-    fun filterItems(query: String){
+    @SuppressLint("NotifyDataSetChanged")
+    fun filterItems(query: String) {
         val filteredList = ArrayList<Elixirs>()
         elixirs.forEach { elixir ->
             if (elixir.name.lowercase().trim().contains(query)) {
@@ -52,7 +53,8 @@ class RecyclerElixirsAdapter(private var elixirs: List<Elixirs>) :
         notifyDataSetChanged()
     }
 
-    fun onFilterCleared(allElixirs: List<Elixirs>?){
+    @SuppressLint("NotifyDataSetChanged")
+    fun onFilterCleared(allElixirs: List<Elixirs>?) {
         if (allElixirs != null) {
             elixirs = allElixirs
             notifyDataSetChanged()

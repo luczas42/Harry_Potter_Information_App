@@ -17,10 +17,17 @@ class RecyclerElixirInventorsAdapter(private val inventors: List<Inventors>) :
         }
 
         private fun wizardNameNullCheck(inventor: Inventors) {
+            @Suppress("SENSELESS_COMPARISON")
             if (inventor.firstName != null) {
                 binding.rvItemName.text = inventor.firstName.plus(" ".plus(inventor.lastName))
             } else {
                 binding.rvItemName.text = inventor.lastName
+            }
+        }
+
+        fun bind() {
+            with(binding) {
+                "Unknown".also { rvItemName.text = it }
             }
         }
     }
@@ -36,11 +43,19 @@ class RecyclerElixirInventorsAdapter(private val inventors: List<Inventors>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(inventors[position])
+        if (inventors.isEmpty()){
+            holder.bind()
+        }else{
+            holder.bind(inventors[position])
+        }
     }
 
     override fun getItemCount(): Int {
-        return inventors.size
+        return if (inventors.isEmpty()){
+            1
+        }else{
+            inventors.size
+        }
     }
 
 }
