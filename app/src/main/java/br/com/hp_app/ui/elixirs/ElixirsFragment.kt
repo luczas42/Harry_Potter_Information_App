@@ -1,23 +1,28 @@
 package br.com.hp_app.ui.elixirs
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.hp_app.data.model.Elixirs
 import br.com.hp_app.databinding.FragmentElixirsBinding
-import br.com.hp_app.ui.viewmodel.ElixirsViewModel
-import org.w3c.dom.Text
+import br.com.hp_app.ui.DetailsActivity
+import br.com.hp_app.ui.adapters.RecyclerElixirsAdapter
+import br.com.hp_app.ui.viewmodel.ListsViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ElixirsFragment : Fragment() {
 
     private var _binding: FragmentElixirsBinding? = null
 
+    private val viewModel by viewModel<ListsViewModel>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
+    private lateinit var adapter: RecyclerElixirsAdapter
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -25,21 +30,58 @@ class ElixirsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val elixirsViewModel =
-            ViewModelProvider(this).get(ElixirsViewModel::class.java)
-
         _binding = FragmentElixirsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
-
-        elixirsViewModel.text.observe(viewLifecycleOwner) {
-        }
+        requireActivity().invalidateOptionsMenu()
+        setupRecyclerView()
         return root
+    }
+
+    private fun setupRecyclerView() {
+        viewModel.getElixirList()
+        viewModel.elixirList.observe(requireActivity()) { elixirs ->
+            binding.recyclerViewElixirs.layoutManager = LinearLayoutManager(context)
+            setAdapter(elixirs)
+            setItemClickListener()
+            onAdapterSuccess()
+            onSearch()
+        }
+    }
+
+    private fun onSearch() {
+        viewModel.searchQuery.observe(requireActivity()) { query ->
+            if (query != "") {
+                adapter.filterItems(query)
+            } else {
+                adapter.onFilterCleared(viewModel.elixirList.value)
+            }
+        }
+    }
+
+    private fun onAdapterSuccess() {
+        if (adapter.itemCount > 0) {
+            binding.recyclerViewElixirs.visibility = View.VISIBLE
+            binding.loading.visibility = View.GONE
+        }
+    }
+
+    private fun setItemClickListener() {
+        adapter.itemClickListener = { elixirId ->
+            val intent = Intent(activity, DetailsActivity::class.java)
+            intent.putExtra("elixirId", elixirId)
+            startActivity(intent)
+        }
+    }
+
+    private fun setAdapter(elixirs: List<Elixirs>) {
+        adapter = RecyclerElixirsAdapter(elixirs)
+        binding.recyclerViewElixirs.adapter = adapter
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        viewModel.elixirList.removeObservers(requireActivity())
+
         _binding = null
     }
 }

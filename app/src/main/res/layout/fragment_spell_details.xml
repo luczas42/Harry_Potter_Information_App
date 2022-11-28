@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/textOnP"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Gryffindor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--    Effect-->
+    <TextView
+        android:id="@+id/tvEffects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topo"
+        android:text="Effect" />
+
+
+    <TextView
+        android:id="@+id/tvEffectsDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvEffects"
+        app:layout_constraintTop_toBottomOf="@+id/tvEffects"
+        android:text="@string/default_unknown"/>
+
+    <View
+        android:id="@+id/animalViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:foreground="@drawable/divider_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvEffectsDescription"
+        tools:ignore="UnusedAttribute" />
+
+
+    <!--    Side Effects-->
+    <TextView
+        android:id="@+id/tvIncantation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/animalViewDivider"
+        android:text="Incantation" />
+
+
+    <TextView
+        android:id="@+id/tvIncantationescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvIncantation"
+        app:layout_constraintTop_toBottomOf="@+id/tvIncantation"
+        android:text="@string/default_unknown"/>
+
+    <View
+        android:id="@+id/founderViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:foreground="@drawable/divider_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvIncantationescription"
+        tools:ignore="UnusedAttribute" />
+
+    <!--    Characteristics-->
+    <TextView
+        android:id="@+id/tvCanBeVerbalDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvCanBeVerbal"
+        app:layout_constraintTop_toBottomOf="@+id/tvCanBeVerbal"
+        android:text="@string/default_unknown"/>
+
+    <View
+        android:id="@+id/elementViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:foreground="@drawable/divider_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCanBeVerbalDescription"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/tvCanBeVerbal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/founderViewDivider"
+        android:text="Can be Verbal" />
+
+    <!--    Time-->
+    <TextView
+        android:id="@+id/tvTypeDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvType"
+        app:layout_constraintTop_toBottomOf="@+id/tvType"
+        android:text="@string/default_unknown"/>
+
+    <View
+        android:id="@+id/ghostViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:foreground="@drawable/divider_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTypeDescription"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/elementViewDivider"
+        android:text="Type" />
+
+    <!--    Difficulty-->
+    <TextView
+        android:id="@+id/tvLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ghostViewDivider"
+        android:text="Light" />
+
+    <View
+        android:id="@+id/commonRoomViewDivider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:foreground="@drawable/divider_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLightDescription"
+        tools:ignore="UnusedAttribute" />
+
+    <TextView
+        android:id="@+id/tvLightDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvLight"
+        app:layout_constraintTop_toBottomOf="@+id/tvLight"
+        android:text="@string/default_unknown"/>
+
+    <!--    Manufacturer-->
+    <TextView
+        android:id="@+id/tvCreator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commonRoomViewDivider"
+        android:text="Creator" />
+
+    <TextView
+        android:id="@+id/tvCreatorDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tvCreator"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreator"
+        android:text="@string/default_unknown"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

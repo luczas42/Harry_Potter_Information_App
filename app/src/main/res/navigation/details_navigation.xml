@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_houses_details">
+
+    <fragment
+        android:id="@+id/navigation_houses_details"
+        android:name="br.com.hp_app.ui.houses.HousesDetailsFragment"
+        android:label="@string/houses_label"
+        tools:layout="@layout/fragment_house_details"/>
+    <fragment
+        android:id="@+id/navigation_elixirs_details"
+        android:name="br.com.hp_app.ui.elixirs.ElixirsDetailsFragment"
+        android:label="@string/elixirs_label"
+        tools:layout="@layout/fragment_elixir_details"/>
+    <fragment
+        android:id="@+id/navigation_spells_details"
+        android:name="br.com.hp_app.ui.spells.SpellDetailsFragment"
+        android:label="Spells"
+        tools:layout="@layout/fragment_spell_details"/>
+    <fragment
+        android:id="@+id/navigation_wizards_details"
+        android:name="br.com.hp_app.ui.wizards.WizardDetailsFragment"
+        android:label="WizardDetailsFragment"
+        tools:layout="@layout/fragment_wizard_details"/>
+    <fragment
+        android:id="@+id/navigation_ingredients_details"
+        android:name="br.com.hp_app.ui.spells.IngredientDetailsFragment"
+        android:label="IngredientDetailsFragment"
+        tools:layout="@layout/fragment_ingredient_details"/>
+
+</navigation>

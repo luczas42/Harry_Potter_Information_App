@@ -6,4 +6,35 @@
     <string name="title_wizards">Wizards</string>
     <string name="title_ingredients">Ingredients</string>
     <string name="hint_pesquisa">Search…</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_detalhes">DetalhesActivity</string>
+    <string name="default_unknown">Unknown</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="houses_label">Houses</string>
+    <string name="elixirs_label">Elixirs</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!--    House Details-->
+    <string name="house_banner">House Banner</string>
+    <string name="animal_details">Animal: "</string>
+    <string name="colors">Colors</string>
+    <string name="founder">Founder</string>
+    <string name="element">Element</string>
+    <string name="ghost">Ghost</string>
+    <string name="common_room">Common Room</string>
+    <string name="heads">Heads</string>
+    <string name="traits">Traits</string>
+
+    <!-- Elixir Details -->
+    <string name="effect">Effect</string>
+    <string name="side_effects">Side Effects</string>
+    <string name="characteristics">Characteristics</string>
+    <string name="time">Time</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="inventors">Inventors</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="elixirs">Elixirs</string>
+
 </resources>
