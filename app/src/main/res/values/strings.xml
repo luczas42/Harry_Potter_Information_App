@@ -6,14 +6,4 @@
     <string name="title_wizards">Wizards</string>
     <string name="title_ingredients">Ingredients</string>
     <string name="hint_pesquisa">Search…</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_detalhes">DetalhesActivity</string>
-    <string name="animal_details">Animal: "</string>
-    <string name="default_unknown">Unknown</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="houses_label">Houses</string>
-    <string name="elixirs_label">Elixirs</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
 </resources>

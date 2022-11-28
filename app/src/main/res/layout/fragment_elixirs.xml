@@ -7,7 +7,6 @@
     tools:context=".ui.elixirs.ElixirsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewElixirs"
         tools:listitem="@layout/listas_recyclerview_item"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"

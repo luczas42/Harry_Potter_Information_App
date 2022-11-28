@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_elixirs"
+        android:id="@+id/navigation_home"
         android:icon="@drawable/ic_elixirs"
-        android:title="@string/title_elixirs"/>
+        android:title="@string/title_elixirs" />
 
     <item
-        android:id="@+id/navigation_houses"
+        android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_casas"
         android:title="@string/title_houses" />
 

@@ -8,6 +8,44 @@
     android:background="@color/secondary"
     >
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/listasTitulo"
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Elixirs" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="0dp"
+            android:textColor="@color/secondaryDark"
+            android:layout_height="wrap_content"
+            android:background="@color/secondaryLight"
+            android:layout_margin="16dp"
+            android:hint="@string/hint_pesquisa"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listasTitulo"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <fragment
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -16,14 +54,14 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topo"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:navGraph="@navigation/listas_navigation"
+        app:navGraph="@navigation/mobile_navigation"
         tools:ignore="FragmentTagUsage" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        app:itemIconTint="@color/textOnP"
-        app:itemTextColor="@color/textOnP"
+        app:itemIconTint="@color/secondaryDark"
+        app:itemTextColor="@color/secondaryDark"
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
